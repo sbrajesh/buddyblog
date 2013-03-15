@@ -105,6 +105,8 @@ function register_form(){
     $settings=array(
         'post_type'=> buddyblog_get_posttype(),
         'post_status'=>$post_status,
+        'comment_status'=>'open',
+        'show_comment_option'=>true,
               
         'tax'=>array(
                    'category'=>array('taxonomy'=>'category',
