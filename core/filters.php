@@ -6,10 +6,11 @@
 add_action('comment_form','buddyblog_fix_comment_form_redirect' );
 
 function buddyblog_fix_comment_form_redirect($post_id){
-   if(!buddyblog_show_posts_on_profile())
+    $post=get_post($post_id);
+    
+    if( !buddyblog_show_posts_on_profile( $post ) )
        return $post_id;
    
-    $post=get_post($post_id);
     if($post->post_type!=  buddyblog_get_posttype())
         return;
         $permalink= get_permalink($post_id);
@@ -86,7 +87,7 @@ add_filter('post_type_link','buddyblog_fix_permalink',10,4);
 
 function buddyblog_fix_permalink($permalink, $post, $leavename,$sample){
    global $bp;
-    if(!buddyblog_show_posts_on_profile())
+    if(!buddyblog_show_posts_on_profile($post))
         return $permalink;
     
     $type=buddyblog_get_posttype();
@@ -109,7 +110,7 @@ function buddyblog_fix_permalink($permalink, $post, $leavename,$sample){
 add_filter('post_link','buddyblog_filter_post_permalink',10,3);
 function buddyblog_filter_post_permalink($permalink,$post,$leavename){
     global $bp;
-     if(!buddyblog_show_posts_on_profile())
+     if(!buddyblog_show_posts_on_profile($post))
          return $permalink;
     if($post->post_type!=  buddyblog_get_posttype())
         return $permalink;
@@ -179,8 +180,7 @@ function buddyblog_limit_no_of_posts(){
  * 
  * @return type 
  */
- function buddyblog_show_posts_on_profile(){
+ function buddyblog_show_posts_on_profile($post){
      
-     return apply_filters('buddyblog_show_posts_on_profile',false);
+     return apply_filters('buddyblog_show_posts_on_profile',false,$post);
  }
-?>
