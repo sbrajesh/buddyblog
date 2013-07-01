@@ -74,9 +74,14 @@ function buddyblog_get_edit_link($id=0,$label='Edit'){
 function buddyblog_get_delete_link($id=0,$label='Delete'){
     if(!buddyblog_user_can_delete($id,  get_current_user_id()))
             return;
-    $permalink=get_permalink($id);
+    global $bp;
+    $post = get_post( $id );
     
-    $url= $permalink.'delete/';
+    $action_name='delete';
+    
+    $url= bp_core_get_user_domain($post->post_author).$bp->buddyblog->id."/{$action_name}/".$post->ID."/";
+    
+    
    
      return "<a href='{$url}' class='confirm' >{$label}</a>";
     

@@ -14,6 +14,7 @@ class BuddyBlogActions{
         add_action('bp_init',array($this,'register_form'),7);
         add_action('bp_actions',array($this,'publish'));
         add_action('bp_actions',array($this,'unpublish'));
+        add_action('bp_actions',array($this,'delete'));
         
         
     }
@@ -41,7 +42,26 @@ class BuddyBlogActions{
      * delete Post screen
      */
     function delete(){
-        //
+        
+          if(!(bp_is_buddyblog_component()&&  bp_is_current_action('delete')))
+           return;
+        $post_id=  bp_action_variable(0);
+        if(!$post_id)
+            return;
+        
+      
+         
+            if(buddyblog_user_can_delete($post_id,  get_current_user_id())){
+               
+                    wp_delete_post($post_id, true);
+                    bp_core_add_message (__('Post deleted successfully'),'buddyblog');
+                    //redirect
+                    wp_redirect(buddyblog_get_home_url());//hardcoding bad
+                    exit(0);  
+            }
+           else
+               bp_core_add_message ('You should not perform unauthorized actions','error');
+       
         
     }
     /**
