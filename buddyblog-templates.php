@@ -194,7 +194,8 @@ function buddyblog_paginate(){
          // structure of “format” depends on whether we’re using pretty permalinks
          $perma_struct=get_option('permalink_structure');
          $format = empty( $perma_struct ) ? '&page=%#%' : 'page/%#%/';
-         $base = get_pagenum_link(1);
+         $base = buddyblog_get_home_url().'my-posts/';
+        // echo $base;
          if(bp_is_buddyblog_component()){
              //$base = $base.'/';
     
