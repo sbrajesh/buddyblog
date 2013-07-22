@@ -194,9 +194,9 @@ function buddyblog_paginate(){
          // structure of “format” depends on whether we’re using pretty permalinks
          $perma_struct=get_option('permalink_structure');
          $format = empty( $perma_struct ) ? '&page=%#%' : 'page/%#%/';
-         $base=get_pagenum_link(1);
+         $base = get_pagenum_link(1);
          if(bp_is_buddyblog_component()){
-             $base=$base.bp_current_action().'/';
+             //$base = $base.'/';
     
          }
               echo paginate_links(array(
