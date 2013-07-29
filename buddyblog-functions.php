@@ -88,7 +88,7 @@ function buddyblog_get_remaining_posts($user_id=false){
 function buddyblog_is_single_post(){
     $action=bp_current_action();
     $post_id=intval(bp_action_variable(0));
-    if(bp_is_buddyblog_component()&&$action=='my-posts'&&!empty($post_id)  )
+    if( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && !empty( $post_id )  )
         return true;
     
     return false;
@@ -100,7 +100,7 @@ function buddyblog_is_single_post(){
 function buddyblog_is_posts_archive(){
     $action=bp_current_action();
     $post_id=bp_action_variable(0);
-    if(bp_is_buddyblog_component()&&$action=='my-posts'&&empty($post_id)  )
+    if( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && empty( $post_id ) )
         return true;
     return false;
 }
@@ -149,7 +149,7 @@ function buddyblog_get_home_url($user_id=false){
     if(!$user_id)
         $user_id=get_current_user_id ();
     global $bp;
-    $url=bp_core_get_user_domain($user_id).$bp->buddyblog->id.'/';
+    $url=bp_core_get_user_domain($user_id).$bp->buddyblog->slug.'/';
     return $url;
 }
 

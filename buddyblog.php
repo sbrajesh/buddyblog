@@ -9,6 +9,10 @@
  */
 define('BP_BUDDYBLOG_PLUGIN_DIR',  plugin_dir_path(__FILE__));
 define('BP_BUDDYBLOG_PLUGIN_URL',  plugin_dir_url(__FILE__));
+
+if( !defined( 'BUDDYBLOG_ARCHIVE_SLUG') )
+    define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts');
+
 /**
  * Include the component loader
  */
@@ -37,7 +41,6 @@ register_activation_hook(__FILE__, 'buddyblog_install' );
 //ahh, let us not use it in the first release, just let us know what people say
 //add_action('bp_enqueue_scripts','buddyblog_load_comment_js');
 function buddyblog_load_comment_js(){
-    if(bp_is_current_component('blog')&&  bp_is_current_action('my-posts') )
+    if( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) )
         wp_enqueue_script( 'comment-reply' );
 }
-?>

@@ -87,7 +87,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 			'slug'                => $this->slug,
 			'position'            => 70,
 			'screen_function'     => array($screen,'my_posts'),
-			'default_subnav_slug' => 'my-posts',
+			'default_subnav_slug' => BUDDYBLOG_ARCHIVE_SLUG,
 			'item_css_id'         => $this->id
 		);
                 
@@ -100,7 +100,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 		// Add the Group Invites nav item
                 $sub_nav[] = array(
 			'name'            => bp_is_my_profile()?__( 'My Posts', 'buddyblog' ):sprintf(__( '%s\' Posts', 'buddyblog' ),  bp_get_displayed_user_fullname()),
-			'slug'            => 'my-posts',
+			'slug'            => BUDDYBLOG_ARCHIVE_SLUG,
 			'parent_url'      => $blog_link,
 			'parent_slug'     => $this->slug,
 			'screen_function' => array($screen,'my_posts'),

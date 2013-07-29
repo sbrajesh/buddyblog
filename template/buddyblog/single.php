@@ -1,14 +1,15 @@
 <?php if(buddyblog_user_has_posted()):?>
 <?php
-if(bp_is_my_profile()||  is_super_admin())
+if(bp_is_my_profile() ||  is_super_admin())
     $status='any';
 else
     $status='publish';
 
-$query_args=array('author'=>  bp_displayed_user_id(),
-                  'post_type'=> buddyblog_get_posttype(),
-                  'post_status'=>$status,
-                  'p'=>  intval(bp_action_variable(0))
+$query_args = array(
+        'author'        => bp_displayed_user_id(),
+        'post_type'     => buddyblog_get_posttype(),
+        'post_status'   => $status,
+        'p'             =>  intval( bp_action_variable( 0 ) )
         );
 
 

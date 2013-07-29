@@ -47,7 +47,7 @@ function buddyblog_get_edit_url($post_id=false){
    
        $action_name='edit';
     //if we are here, we can allow user to edit the post
-    return bp_core_get_user_domain($post->post_author).$bp->buddyblog->id."/{$action_name}/".$post->ID."/";
+    return bp_core_get_user_domain($post->post_author).$bp->buddyblog->slug."/{$action_name}/".$post->ID."/";
 }
 
 /**
@@ -79,7 +79,7 @@ function buddyblog_get_delete_link($id=0,$label='Delete'){
     
     $action_name='delete';
     
-    $url= bp_core_get_user_domain($post->post_author).$bp->buddyblog->id."/{$action_name}/".$post->ID."/";
+    $url= bp_core_get_user_domain($post->post_author).$bp->buddyblog->slug."/{$action_name}/".$post->ID."/";
     
     
    
@@ -100,7 +100,7 @@ function buddyblog_get_new_url(){
         return;
     
     //if we are here, we can allow user to edit the post
-    return bp_core_get_user_domain($user_id).$bp->buddyblog->id.'/edit/';
+    return bp_core_get_user_domain($user_id).$bp->buddyblog->slug.'/edit/';
 }
 
 
@@ -199,7 +199,7 @@ function buddyblog_paginate(){
          // structure of “format” depends on whether we’re using pretty permalinks
          $perma_struct=get_option('permalink_structure');
          $format = empty( $perma_struct ) ? '&page=%#%' : 'page/%#%/';
-         $base = buddyblog_get_home_url().'my-posts/';
+         $base = trailingslashit( buddyblog_get_home_url() . BUDDYBLOG_ARCHIVE_SLUG );
         // echo $base;
          if(bp_is_buddyblog_component()){
              //$base = $base.'/';
