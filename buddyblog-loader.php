@@ -79,11 +79,23 @@ class BuddyBlogCoreComponent extends BP_Component {
 
 		// Define local variables
 		$sub_nav = array();
-                $screen= BuddyBlogScreens::get_instance();//instance of the blog screen
-                //
-		// Add 'Groups' to the main navigation
+                $screen = BuddyBlogScreens::get_instance();//instance of the blog screen
+                
+                $total_posts = 0;
+                if( bp_is_my_profile() ){
+                    $total_posts = buddyblog_get_total_posted(bp_displayed_user_id());
+                    
+                    
+                }else{
+                    
+                   $total_posts = buddyblog_get_total_published_posts(bp_displayed_user_id());
+                    
+                }
+                
+                    //
+		// Add 'Blog' to the main navigation
 		$main_nav = array(
-			'name'                => sprintf( __( 'Blog ', 'buddyblog' ) ),
+			'name'                => sprintf( __( 'Blog <span>%d</span>', 'buddyblog' ), $total_posts ),
 			'slug'                => $this->slug,
 			'position'            => 70,
 			'screen_function'     => array($screen,'my_posts'),
