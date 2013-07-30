@@ -20,6 +20,24 @@ function buddyblog_load_template($template){
 }
 
 
+function buddyblog_get_post_url( $post_id ){
+    global $bp;
+    
+    $id_or_slug = '';
+    $post = get_post( $post_id );
+    
+    if( get_post_type( $post ) != buddyblog_get_posttype() )
+        return get_permalink ( $post_id );
+    
+    if( buddyblog_use_slug_in_permalink() )
+        $id_or_slug = $post->post_name;
+    else 
+        $id_or_slug = $post->ID;
+    
+    return bp_core_get_user_domain($post->post_author).$bp->buddyblog->slug. '/' . BUDDYBLOG_ARCHIVE_SLUG. '/' . $id_or_slug.'/';
+    
+    
+}
 /**
  * Get the url of the Post for editing
  * @param type $post_id
@@ -42,7 +60,7 @@ function buddyblog_get_edit_url($post_id=false){
    
    
     
-    if(!($post->post_author==$user_id||  is_super_admin()))
+    if(!($post->post_author==$user_id || is_super_admin()))
             return ;
    
        $action_name='edit';

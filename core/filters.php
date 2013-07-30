@@ -98,7 +98,7 @@ function buddyblog_fix_permalink($permalink, $post, $leavename,$sample){
         if($post->post_status != 'publish')
             $permalink =  buddyblog_get_edit_url ($post->ID);
         else
-            $permalink = bp_core_get_user_domain($post->post_author).$bp->buddyblog->slug. '/' . BUDDYBLOG_ARCHIVE_SLUG. '/' . $post->ID.'/';
+            $permalink = buddyblog_get_post_url ( $post->ID );
         
           }
     
@@ -120,7 +120,7 @@ function buddyblog_filter_post_permalink($permalink,$post,$leavename){
      if($post->post_status != 'publish')
             $permalink =  buddyblog_get_edit_url ($post->ID);
      else
-       $permalink = bp_core_get_user_domain($post->post_author).$bp->buddyblog->slug. '/' . BUDDYBLOG_ARCHIVE_SLUG. '/' . $post->ID.'/';
+       $permalink = buddyblog_get_post_url ( $post->ID );
          
     return $permalink;
     //if we are here, we need to change that permalink

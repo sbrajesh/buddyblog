@@ -9,7 +9,7 @@ $query_args = array(
         'author'        => bp_displayed_user_id(),
         'post_type'     => buddyblog_get_posttype(),
         'post_status'   => $status,
-        'p'             =>  intval( bp_action_variable( 0 ) )
+        'p'             =>  intval( buddyblog_get_post_id( bp_action_variable( 0 ) ) )
         );
 
 

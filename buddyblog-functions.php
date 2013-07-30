@@ -86,8 +86,19 @@ function buddyblog_get_remaining_posts($user_id=false){
  * @return type 
  */
 function buddyblog_is_single_post(){
-    $action=bp_current_action();
-    $post_id=intval(bp_action_variable(0));
+    $action  = bp_current_action();
+    $post_id = 0; 
+    //make sure 
+    //check the strategy
+    if( buddyblog_use_slug_in_permalink() ){
+        
+        $slug = bp_action_variable(0);
+        
+        $post_id = buddyblog_get_post_id_from_slug( $slug );
+        
+    }else   
+        $post_id = intval(bp_action_variable(0));
+    
     if( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && !empty( $post_id )  )
         return true;
     
@@ -145,11 +156,11 @@ function buddyblog_user_has_posted(){
  * @param type $user_id
  * @return string 
  */
-function buddyblog_get_home_url($user_id=false){
-    if(!$user_id)
-        $user_id=get_current_user_id ();
+function buddyblog_get_home_url( $user_id=false ){
+    if( !$user_id )
+        $user_id = get_current_user_id ();
     global $bp;
-    $url=bp_core_get_user_domain($user_id).$bp->buddyblog->slug.'/';
+    $url = bp_core_get_user_domain( $user_id ) . $bp->buddyblog->slug. '/';
     return $url;
 }
 
@@ -210,7 +221,41 @@ function buddyblog_get_post_publish_unpublish_link($post_id=false,$label_ac='Pub
  * @return bool 
  */
 function buddyblog_is_post_published($post_id){
-    return get_post_field('post_status', $post_id)=='publish';
+    return get_post_field('post_status', $post_id) == 'publish';
 }
 
-?>
+function buddyblog_use_slug_in_permalink(){
+    
+    return apply_filters( 'buddyblog_use_slug_in_permalink', true );//whether to use id or slug in permalink
+}
+/**
+ * Get the id of the post via 
+ * @param type $slug
+ * @return int ID of Post
+ */
+function buddyblog_get_post_id_from_slug( $slug ){
+    if( !$slug )
+        return 0;
+    
+    $post = get_page_by_path($slug, false, buddyblog_get_posttype() );
+    
+    if($post)
+        return $post->ID;
+    return 0;
+    
+}
+/**
+ * Get the id of the post  
+ * @param type $slug  or ID
+ * @return int ID of Post
+ */
+function buddyblog_get_post_id( $slug_or_id ){
+    if(is_int( $slug_or_id ))
+        return $slug_or_id;
+    
+    //otherwise
+    return buddyblog_get_post_id_from_slug($slug_or_id);
+    
+    
+    
+}
