@@ -189,3 +189,41 @@ function buddyblog_limit_no_of_posts(){
      return true;
      return apply_filters('buddyblog_show_posts_on_profile',false,$post);
  }
+
+ //modify the component title
+ function buddyblog_modify_page_title( $full_title, $title, $sep, $seplocation ) {
+	global $bp;
+
+	if( !bp_is_buddyblog_component() )
+            return $full_title;
+        
+        $post_type_obj = get_post_type_object( buddyblog_get_posttype() );
+        
+        $full_title = bp_get_displayed_user_fullname() . ' ' . $sep. ' ' . $post_type_obj->labels->name . ' ' . $sep. ' ';
+        if( buddyblog_is_single_post() ){
+            
+            $post_id =  buddyblog_get_post_id( bp_action_variable(0) );
+            $post = get_post( $post_id );
+            
+            $full_title .= $post->post_title. ' '. $sep. ' ';  
+        }elseif(buddyblog_is_edit_post()){
+            
+            
+            $full_title .= $post_type_obj->labels->edit_item. ' '. $sep. ' ';  
+            
+        }elseif(buddyblog_is_new_post()){
+            
+            $full_title .= $post_type_obj->labels->new_item. ' '. $sep. ' ';  
+        }
+        
+        
+        return $full_title;
+       //  bp_get_displayed_user_fullname(), ucwords( $component_name ), $sep 
+     //if we are here, we are on 
+        
+        
+
+
+	
+}
+add_filter( 'bp_modify_page_title', 'buddyblog_modify_page_title', 2000, 4 );

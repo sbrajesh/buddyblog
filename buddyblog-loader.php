@@ -214,4 +214,3 @@ function bp_setup_buddyblog() {
 add_action( 'bp_loaded', 'bp_setup_buddyblog');
 
 
-?>

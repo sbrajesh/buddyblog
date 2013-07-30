@@ -14,6 +14,9 @@ $query_args = array(
 
 
         query_posts($query_args);
+        global $post;
+       // global $withcomments;
+       // $withcomments = true;
 ?>
 <?php while(have_posts()):the_post();?>
 <div class="user-post">
