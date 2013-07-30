@@ -226,4 +226,4 @@ function buddyblog_limit_no_of_posts(){
 
 	
 }
-add_filter( 'bp_modify_page_title', 'buddyblog_modify_page_title', 2000, 4 );
+add_filter( 'bp_modify_page_title', 'buddyblog_modify_page_title', 20, 4 );
