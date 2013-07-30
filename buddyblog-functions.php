@@ -226,7 +226,7 @@ function buddyblog_is_post_published($post_id){
 
 function buddyblog_use_slug_in_permalink(){
     
-    return apply_filters( 'buddyblog_use_slug_in_permalink', true );//whether to use id or slug in permalink
+    return apply_filters( 'buddyblog_use_slug_in_permalink', false );//whether to use id or slug in permalink
 }
 /**
  * Get the id of the post via 

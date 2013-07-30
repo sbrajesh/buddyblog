@@ -186,8 +186,8 @@ function buddyblog_limit_no_of_posts(){
  * @return type 
  */
  function buddyblog_show_posts_on_profile($post){
-     return true;
-     return apply_filters('buddyblog_show_posts_on_profile',false,$post);
+     
+     return apply_filters('buddyblog_show_posts_on_profile', false, $post);
  }
 
  //modify the component title
