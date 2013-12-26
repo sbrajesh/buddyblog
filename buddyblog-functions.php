@@ -250,8 +250,9 @@ function buddyblog_get_post_id_from_slug( $slug ){
  * @return int ID of Post
  */
 function buddyblog_get_post_id( $slug_or_id ){
-    if(is_int( $slug_or_id ))
-        return $slug_or_id;
+    
+    if(is_numeric( $slug_or_id ))
+        return absint( $slug_or_id );
     
     //otherwise
     return buddyblog_get_post_id_from_slug($slug_or_id);
