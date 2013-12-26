@@ -36,6 +36,7 @@ class BuddyBlogCoreComponent extends BP_Component {
                        
 			'buddyblog-functions.php',
 			'buddyblog-notifications.php',
+                        'buddyblog-hooks.php',
                         'core/filters.php',
                         'core/permissions.php'
                        

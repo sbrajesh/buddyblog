@@ -19,6 +19,11 @@ $query_args = array(
        // $withcomments = true;
 ?>
 <?php while(have_posts()):the_post();?>
+    
+    <?php
+        //used to unhook BuddyPress Theme compatibility comment closing function
+        do_action( 'buddyblog_before_blog_post' );
+    ?>
 <div class="user-post">
 <h2><?php the_title();?></h2>
 
@@ -38,6 +43,10 @@ $query_args = array(
 
 </div>
 <?php comments_template('/comments.php'); ?>
+    <?php
+        //used to hook back BuddyPress Theme compatibility comment closing function
+        do_action( 'buddyblog_after_blog_post' );
+    ?>
 <?php endwhile;?>
 <?php wp_reset_postdata();?>
 <?php else:?>
