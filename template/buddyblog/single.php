@@ -48,7 +48,10 @@ $query_args = array(
         do_action( 'buddyblog_after_blog_post' );
     ?>
 <?php endwhile;?>
-<?php wp_reset_postdata();?>
+<?php 
+    wp_reset_postdata();
+    wp_reset_query();
+?>
 <?php else:?>
 <p>No Posts found!</p>
 

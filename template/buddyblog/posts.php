@@ -74,7 +74,10 @@ $query_args=array('author'=>  bp_displayed_user_id(),
             <p>There are no posts by this user at the moment. Please check back later</p>
     <?php endif;?>
 
-    <?php wp_reset_postdata();?>
+    <?php 
+       wp_reset_postdata();
+       wp_reset_query();
+    ?>
 
 <?php elseif(bp_is_my_profile()):?>
     <p>You haven't posted anything yet. <a href="<?php echo buddyblog_get_new_url();?>">New Post</a></p>
