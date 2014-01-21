@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: BuddyBlog
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Brajesh Singh
  * Author URI: http://buddydev.com/members/sbrajesh/
  * Plugin URI: http://buddydev.com/plugins/buddyblog/
@@ -10,7 +10,7 @@
 define('BP_BUDDYBLOG_PLUGIN_DIR',  plugin_dir_path(__FILE__));
 define('BP_BUDDYBLOG_PLUGIN_URL',  plugin_dir_url(__FILE__));
 
-if( !defined( 'BUDDYBLOG_ARCHIVE_SLUG') )
+if( !defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) )
     define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts');
 
 /**
