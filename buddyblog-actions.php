@@ -9,8 +9,9 @@ class BuddyBlogActions{
         /**
          * Register form for new/edit resume
          */
-        if(is_admin())
+        if( is_admin() )
             return;
+        
         add_action( 'bp_init',    array( $this, 'register_form' ), 7 );
         add_action( 'bp_actions', array( $this, 'publish' ) );
         add_action( 'bp_actions', array( $this, 'unpublish' ) );
@@ -146,7 +147,8 @@ function register_form(){
                                 )
           
                 ),  
-        'upload_count'=>2
+        'upload_count'=> 0,
+        'has_post_thumbnail'=> 1
         );
     
    //use it to add extra fields or filter the post type etc
