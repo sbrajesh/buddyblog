@@ -28,7 +28,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 	/**
 	 * Include files
 	 */
-	function includes() {
+	public function includes( $includes = array() ) {
 		$includes = array(
                         'buddyblog-templates.php',
                        	'buddyblog-actions.php',
@@ -48,7 +48,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 	 * Setup globals
 	 */
         
-	function setup_globals() {
+	public function setup_globals( $globals = array() ) {
 		global $bp;
 
 		// Define a slug, if necessary
@@ -76,7 +76,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 	 * Sets up user tabs
 	 * 
 	 */
-	function setup_nav() {
+	public function setup_nav( $main_nav = array(), $main_nav = array() ) {
 
 		// Define local variables
 		$sub_nav = array();
@@ -145,7 +145,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 	 *
 	 * 
 	 */
-	function setup_admin_bar() {
+	public function setup_admin_bar( $nav = array() ) {
 		global $bp;
 
 		// Prevent debug notices
@@ -183,7 +183,7 @@ class BuddyBlogCoreComponent extends BP_Component {
 	 *
 	 * @global BuddyPress $bp The one true BuddyPress instance
 	 */
-	function setup_title() {
+	public function setup_title() {
 		global $bp;
 
 		if ( bp_is_buddyblog_component() ) {
