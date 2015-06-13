@@ -225,7 +225,9 @@ function buddyblog_get_post_publish_unpublish_link( $post_id = false, $label_ac 
 	
 	if( ! $post_id )
 		return;
-   
+	
+   if( ! buddyblog_user_can_publish( get_current_user_id(), $post_id ) )
+		   return ;
 	$post = get_post( $post_id );
 	
 	$url = '';
