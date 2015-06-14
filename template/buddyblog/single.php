@@ -1,22 +1,23 @@
 <?php if( buddyblog_user_has_posted() ): ?>
 <?php
-    if( bp_is_my_profile() || is_super_admin() )
+    if ( bp_is_my_profile() || is_super_admin() ) {
         $status = 'any';
-    else
+	} else {
         $status = 'publish';
-
+	}
+	
     $query_args = array(
-            'author'        => bp_displayed_user_id(),
-            'post_type'     => buddyblog_get_posttype(),
-            'post_status'   => $status,
-            'p'             => intval( buddyblog_get_post_id( bp_action_variable( 0 ) ) )
-            );
+		'author'        => bp_displayed_user_id(),
+		'post_type'     => buddyblog_get_posttype(),
+		'post_status'   => $status,
+		'p'             => intval( buddyblog_get_post_id( bp_action_variable( 0 ) ) )
+    );
 
 
-        query_posts( $query_args );
-        global $post;
-       // global $withcomments;
-       // $withcomments = true;
+	query_posts( $query_args );
+	global $post;
+	// global $withcomments;
+	// $withcomments = true;
 ?>
 <?php while( have_posts() ): the_post(); ?>
     
@@ -50,18 +51,20 @@
             <div class="clear"></div>
 
         </div>
-    <?php comments_template('/comments.php'); ?>
+   
+		<?php comments_template('/comments.php'); ?>
         <?php
             //used to hook back BuddyPress Theme compatibility comment closing function
             do_action( 'buddyblog_after_blog_post' );
         ?>
-     </div>    
+     </div>
+
     <?php endwhile;?>
     <?php 
         wp_reset_postdata();
         wp_reset_query();
     ?>
-    <?php else:?>
+    <?php else: ?>
     <p> <?php _e( 'No Posts found!', 'buddyblog' );?></p>
 
     <?php endif; ?>
