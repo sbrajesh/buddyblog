@@ -56,7 +56,7 @@ function buddyblog_filter_posting_message( $message, $post_id, $post_type_obj, $
 	
     if ( ! buddyblog_is_post_published( $post_id ) ) {
 	     //if the job is not active, let us know that to the user
-		$message = __( 'Your Post was saved!', 'buddyblog' );
+		$message = __( 'Your post was saved.', 'buddyblog' );
     }
     
     return $message;

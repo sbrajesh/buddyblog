@@ -20,7 +20,13 @@ if( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) )
  */
 function buddyblog_load_component() {
     
-    include_once plugin_dir_path( __FILE__ ) . 'buddyblog-loader.php';
+	$path = plugin_dir_path( __FILE__ );
+	
+    include_once $path . 'buddyblog-loader.php';
+	
+	if( is_admin() && ! defined( 'DOING_AJAX' ) )
+		require_once $path . 'admin/admin.php';
+	
 }
 add_action( 'bp_include', 'buddyblog_load_component' );
 
@@ -32,7 +38,33 @@ add_action( 'bp_include', 'buddyblog_load_component' );
  */
 function buddyblog_install() {
     
-//let us dance :D   
+	$default = array(
+		//'root_slug'			=> 'buddyblog',
+        'post_type'			=> 'post',
+		'post_status'		=> 'publish',
+		'comment_status'	=> 'open',
+		'show_comment_option'	=> 1,
+		'custom_field_title'	=> '',
+		'enable_taxonomy'		=> 1,
+		'enable_category'		=> 1,
+		'enable_tags'			=> 1,
+		'show_posts_on_profile' => false,
+		'limit_no_of_posts' => false,
+		'max_allowed_posts'		=> 20,
+		'publish_cap'	=> '',
+		'allow_unpublishing'	=> 'read',//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
+		'post_cap'		=> 'read',
+		'allow_edit'	=> 1,
+		'allow_delete'	=> 1,
+		
+		//'enabled_tags'			=> 1,
+        //'taxonomies'		=> array( 'category' ),
+        'allow_upload'		=> false,
+        'max_upload_count'	=> 2
+    );
+	
+	if( ! get_site_option( 'buddyblog-settings' ) )
+		add_site_option( 'buddyblog-settings', $default );
 	
 }
 register_activation_hook( __FILE__, 'buddyblog_install' );

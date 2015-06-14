@@ -60,14 +60,16 @@ function buddyblog_user_can_unpublish ( $user_id, $post_id ) {
 		
 		$can_do = true;
 		
-	} else {//if the use is not suepr admin but is logged in
+	} elseif ( buddyblog_get_option( 'allow_unpublishing' ) ) {
 		
 		$post = get_post( $post_id );
 		
 		if ( $post->post_author == $user_id ) {
 			$can_do = true;
-		}	
+		}
+		
 	}
+	
 
 	return apply_filters( 'buddyblog_user_can_unpublish', $can_do, $user_id, $post_id );
 }
@@ -83,11 +85,12 @@ function buddyblog_user_can_unpublish ( $user_id, $post_id ) {
  */
 function buddyblog_user_can_post ( $user_id = false ) {
 	//non logged in users can not post 
-	$can_post = true;
+	$can_post = false;
 
-	if ( ! is_user_logged_in() ) {
-		$can_post = false;
-	}	
+	if( current_user_can( buddyblog_get_option( 'post_cap' ) ) ) {
+		$can_post = true;
+	}
+	
 	return apply_filters( 'buddyblog_user_can_post', $can_post, $user_id );
 }
 
@@ -104,6 +107,9 @@ function buddyblog_user_can_edit ( $post_id, $user_id = false ) {
 	
 	if ( is_super_admin() ) {
 		return true;
+	} elseif ( buddyblog_get_option( 'allow_edit') ) {
+		//editing not allowed
+		return false;
 	}
 	
 	if ( ! $user_id ) {
@@ -128,6 +134,8 @@ function buddyblog_user_can_edit ( $post_id, $user_id = false ) {
  */
 function buddyblog_user_can_delete ( $post_id, $user_id = false ) {
 	
+	
+	
 	if ( ! $post_id && in_the_loop() ) {
 		$post_id = get_the_ID();
 	}	
@@ -138,6 +146,10 @@ function buddyblog_user_can_delete ( $post_id, $user_id = false ) {
 	
 	if ( is_super_admin() ) {
 		return true;
+		
+	}elseif( ! buddyblog_get_option( 'allow_delete') ) {
+		//if deleting post is disabled
+		return false;
 	}
 	
 	if ( ! $user_id ) {

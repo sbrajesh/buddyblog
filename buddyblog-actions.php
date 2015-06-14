@@ -140,7 +140,7 @@ class BuddyBlog_Actions {
 		if( ! function_exists( 'bp_new_simple_blog_post_form' ) )
 			return;
 
-		$post_status = 'publish';
+		$post_status = buddyblog_get_option( 'post_status' );
 		$user_id = get_current_user_id();
 
 		 if( ! buddyblog_user_can_post( $user_id ) )
@@ -150,31 +150,45 @@ class BuddyBlog_Actions {
 		$settings = array(
 			'post_type'				=> buddyblog_get_posttype(),
 			'post_status'			=> $post_status,
-			'comment_status'		=> 'open',
-			'show_comment_option'	=> true,
+			'comment_status'		=> buddyblog_get_option( 'comment_status' ),
+			'show_comment_option'	=> buddyblog_get_option( 'show_comment_option' ),
 			'custom_field_title'	=> '',//we are only using it for hidden field, so no need to show it
 			'custom_fields'			=> array(
-						'_is_buddyblog_post' => array(
-							'type'    => 'hidden',
-							'label'   => '',
-							'default' => 1
-						)
+				'_is_buddyblog_post' => array(
+					'type'    => 'hidden',
+					'label'   => '',
+					'default' => 1
+				)
 			),      
-			'tax'					=> array(
-					   'category'=> array(
-						   'taxonomy'	=>'category',
-							'view_type'=>'checkbox'
-						),
-					   'post_tag'=> array(
-						   'taxonomy'=>'post_tag',
-							'view_type'=>'checkbox'
-						)
-
-			),  
+			
 			'upload_count'			=> 0,
 			'has_post_thumbnail'	=> 1
-			);
+		);
+		
+		if( buddyblog_get_option( 'enable_taxonomy' ) ) {
+			
+			
+			$tax = array();
+			if( buddyblog_get_option( 'enable_category' ) ) {
+				
+				$tax['category']	= array(
+					'taxonomy'		=> 'category',
+					'view_type'		=> 'checkbox'
+				);
+			}	
+			
+			if ( buddyblog_get_option( 'enable_tag' ) ) {
+			
+				$tax['post_tag'] = array(
+					'taxonomy'		=>'post_tag',
+					'view_type'		=>'checkbox'
+				);
 
+			}
+			
+			if( ! empty( $tax ) )
+				$settings['tax'] = $tax;
+		}
 	   //use it to add extra fields or filter the post type etc
 
 		$settings = apply_filters( 'buddyblog_post_form_settings', $settings );

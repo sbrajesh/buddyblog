@@ -21,7 +21,7 @@ function bp_is_buddyblog_component() {
  */
 function buddyblog_get_posttype() {
 	
-    return apply_filters( 'buddyblog_get_post_type', 'post' );
+    return apply_filters( 'buddyblog_get_post_type', buddyblog_get_option( 'post_type' ) );
 	
 }
 
@@ -294,7 +294,7 @@ function buddyblog_get_post_id( $slug_or_id ) {
 function buddyblog_get_option( $option_name ) {
 	
 	$settings = buddyblog_get_settings();
-	
+
 	if( isset( $settings[ $option_name ] ) ) {
 		return $settings[ $option_name ];
 	}
@@ -310,9 +310,26 @@ function buddyblog_get_option( $option_name ) {
 function buddyblog_get_settings() {
     
     $default = array(
-		
+		//'root_slug'			=> 'buddyblog',
         'post_type'			=> 'post',
-        'taxonomies'		=> array( 'category' ),
+		'post_status'		=> 'publish',
+		'comment_status'	=> 'open',
+		'show_comment_option'	=> 1,
+		'custom_field_title'	=> '',
+		'enable_taxonomy'		=> 1,
+		'enable_category'		=> 1,
+		'enable_tags'			=> 1,
+		'show_posts_on_profile' => false,
+		'limit_no_of_posts' => false,
+		'max_allowed_posts'		=> 20,
+		'publish_cap'	=> '',
+		'allow_unpublishing'	=> 'read',//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
+		'post_cap'		=> 'read',
+		'allow_edit'	=> 1,
+		'allow_delete'	=> 1,
+		
+		//'enabled_tags'			=> 1,
+        //'taxonomies'		=> array( 'category' ),
         'allow_upload'		=> false,
         'max_upload_count'	=> 2
         );

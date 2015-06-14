@@ -16,4 +16,4 @@ function buddyblog_enable_bp_comment_filter() {
 	}	
 }
 
-add_action('buddyblog_after_blog_post', 'buddyblog_enable_bp_comment_filter' );
+add_action( 'buddyblog_after_blog_post', 'buddyblog_enable_bp_comment_filter' );
