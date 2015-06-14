@@ -78,7 +78,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 
 		// Define local variables
 		$sub_nav = array();
-		$screen = BuddyBlogScreens::get_instance();//instance of the blog screen
+		$screen = BuddyBlog_Screens::get_instance();//instance of the blog screen
 
 		$total_posts = 0;
 		

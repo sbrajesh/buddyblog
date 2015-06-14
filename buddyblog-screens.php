@@ -12,7 +12,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BuddyBlogScreens{
+class BuddyBlog_Screens {
     
     private static $instance = null;
     
@@ -114,4 +114,4 @@ class BuddyBlogScreens{
 }   
 
 
-BuddyBlogScreens::get_instance();
+BuddyBlog_Screens::get_instance();
