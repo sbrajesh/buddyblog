@@ -290,3 +290,32 @@ function buddyblog_get_post_id( $slug_or_id ) {
     //otherwise
     return buddyblog_get_post_id_from_slug($slug_or_id);
 }
+
+function buddyblog_get_option( $option_name ) {
+	
+	$settings = buddyblog_get_settings();
+	
+	if( isset( $settings[ $option_name ] ) ) {
+		return $settings[ $option_name ];
+	}
+	
+	return '';
+	
+}
+/**
+ * Get BuddyBlog Settings
+ * 
+ * @return type
+ */
+function buddyblog_get_settings() {
+    
+    $default = array(
+		
+        'post_type'			=> 'post',
+        'taxonomies'		=> array( 'category' ),
+        'allow_upload'		=> false,
+        'max_upload_count'	=> 2
+        );
+    
+    return bp_get_option( 'buddyblog-settings', $default );
+}
