@@ -1,5 +1,4 @@
 <?php
-
 /**
  * BuddyBlog Posts Screen Functions
  *

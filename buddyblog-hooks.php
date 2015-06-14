@@ -1,5 +1,5 @@
 <?php
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 //fix to disable/reenable buddypress comment open/close filter
 function buddyblog_disable_bp_comment_filter() {
     
