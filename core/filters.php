@@ -50,7 +50,7 @@ add_filter( 'bpsp_editable_post_id', 'buddyblog_get_editable_post_id' );
 
 function buddyblog_filter_posting_message( $message, $post_id, $post_type_obj, $form ) {
 	
-    if ( $form->post_type != buddyblog_get_posttype() ) {
+    if ( $form->get_post_type() != buddyblog_get_posttype() ) {
         return $message;
 	}
 	
@@ -206,7 +206,7 @@ add_filter( 'user_has_cap', 'buddyblog_add_user_can_edit_cap', 0, 3 );
  */
 function buddyblog_limit_no_of_posts() {
     
-    return apply_filters( 'buddyblog_limit_no_of_posts', false );
+    return apply_filters( 'buddyblog_limit_no_of_posts', buddyblog_get_option( 'limit_no_of_posts' ) );
 }
 /**
  * Should we show the single post on profile
@@ -215,7 +215,7 @@ function buddyblog_limit_no_of_posts() {
  */
  function buddyblog_show_posts_on_profile( $post ) {
      
-     return apply_filters( 'buddyblog_show_posts_on_profile', false, $post );
+     return apply_filters( 'buddyblog_show_posts_on_profile', buddyblog_get_option( 'show_posts_on_profile' ), $post );
  }
 
  //modify the component title

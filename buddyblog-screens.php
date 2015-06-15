@@ -38,7 +38,7 @@ class BuddyBlog_Screens {
           
 			add_action( 'bp_template_content', array( $this, 'get_single_post_data' ) );
 		
-		}else{ //list all posts by user
+		} else { //list all posts by user
          
 			add_action( 'bp_template_content', array( $this, 'get_posts_list_data' ) );
 		}

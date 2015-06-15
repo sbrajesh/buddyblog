@@ -20,10 +20,24 @@ function bp_is_buddyblog_component() {
  * @return type
  */
 function buddyblog_get_posttype() {
+	$post_type = buddyblog_get_option( 'post_type' );
 	
-    return apply_filters( 'buddyblog_get_post_type', buddyblog_get_option( 'post_type' ) );
+	if( ! $post_type )
+		$post_type = 'post';
+	
+    return apply_filters( 'buddyblog_get_post_type', $post_type );
 	
 }
+/**
+ * Get allowed taxonomies
+ * 
+ * @return type
+ */
+function buddyblog_get_taxonomies() {
+	
+    return apply_filters( 'buddyblog_get_taxonomies', buddyblog_get_option( 'allowed_taxonomies' ) );
+}
+
 
 /**
  * Get total no. of Posts  posted by a user
@@ -74,7 +88,7 @@ function buddyblog_get_allowed_no_of_posts( $user_id = false ) {
     if( ! $user_id )
         $user_id = bp_displayed_user_id ();
     //filter on this hook to change the no. of posts allowed
-    return apply_filters( 'buddyblog_allowed_posts_count', 100, $user_id );//by default no. posts allowed
+    return apply_filters( 'buddyblog_allowed_posts_count', buddyblog_get_option( 'max_allowed_posts' ), $user_id );//by default no. posts allowed
 }
 /**
  * get remaining no. of posts to be activated
@@ -288,7 +302,7 @@ function buddyblog_get_post_id( $slug_or_id ) {
     if( is_numeric( $slug_or_id ) )
 		return absint( $slug_or_id );
     //otherwise
-    return buddyblog_get_post_id_from_slug($slug_or_id);
+    return buddyblog_get_post_id_from_slug( $slug_or_id );
 }
 
 function buddyblog_get_option( $option_name ) {
@@ -311,22 +325,23 @@ function buddyblog_get_settings() {
     
     $default = array(
 		//'root_slug'			=> 'buddyblog',
-        'post_type'			=> 'post',
-		'post_status'		=> 'publish',
-		'comment_status'	=> 'open',
+        'post_type'				=> 'post',
+		'post_status'			=> 'publish',
+		'comment_status'		=> 'open',
 		'show_comment_option'	=> 1,
 		'custom_field_title'	=> '',
 		'enable_taxonomy'		=> 1,
+		'allowed_taxonomies'	=> '',
 		'enable_category'		=> 1,
 		'enable_tags'			=> 1,
-		'show_posts_on_profile' => false,
-		'limit_no_of_posts' => false,
+		'show_posts_on_profile' => 0,
+		'limit_no_of_posts'		=> 0,
 		'max_allowed_posts'		=> 20,
-		'publish_cap'	=> '',
-		'allow_unpublishing'	=> 'read',//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
-		'post_cap'		=> 'read',
-		'allow_edit'	=> 1,
-		'allow_delete'	=> 1,
+		'publish_cap'			=> 'read',
+		'allow_unpublishing'	=> 1,//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
+		'post_cap'				=> 'read',
+		'allow_edit'			=> 1,
+		'allow_delete'			=> 1,
 		
 		//'enabled_tags'			=> 1,
         //'taxonomies'		=> array( 'category' ),

@@ -40,7 +40,7 @@ class BuddyBlog_Admin {
 		}
 		
 		$post_statuses = array(
-			'publish'	=> __( 'Published', 'publish' ),
+			'publish'	=> __( 'Published', 'buddyblog' ),
 			'draft'		=> __( 'Draft', 'buddyblog' )
 		);
 		
@@ -49,7 +49,13 @@ class BuddyBlog_Admin {
 			'close'	=> __( 'Closed', 'buddyblog' )
 		);
 		
-		$taxonomies = get_object_taxonomies( buddyblog_get_posttype() );
+		$default_post_type = buddyblog_get_posttype()? buddyblog_get_posttype() : 'post';
+
+		$taxonomies = get_object_taxonomies( $default_post_type );
+		
+		if( isset( $taxonomies['post_format'] ) ) {
+			unset( $taxonomies['post_format'] );
+		}
 		$tax= array();
 		
 		foreach( $taxonomies  as $taxonomy ) {
@@ -64,7 +70,7 @@ class BuddyBlog_Admin {
                     'label'		=> __( 'Blog Post Type', 'buddyblog' ),//you already know it from previous example
                     'desc'		=> __( 'Set the post type for user blog.', 'buddyblog' ),// this is used as the description of the field
                     'type'		=> 'select',
-                    'default'	=> 'post',
+                    'default'	=> $default_post_type,
                     'options'	=> $post_type_options
                 ),
                
@@ -88,7 +94,7 @@ class BuddyBlog_Admin {
                 ),
                 array(
                     'name'		=> 'show_comment_option',
-                    'label'		=> __( 'Allow pst author to enable/disable comment?', 'buddyblog' ),
+                    'label'		=> __( 'Allow post author to enable/disable comment?', 'buddyblog' ),
                     'desc'		=> __( 'If you enable, A user will be able to change the comment status for his/her post.', 'buddyblog' ),
                     'type'		=> 'radio',
                     'default'	=> 1,
@@ -161,11 +167,15 @@ class BuddyBlog_Admin {
                                         
                 ),
                 array(
-                    'name'		=> 'publish_cap',
-                    'label'		=> __( 'Which capability is required for pusblishing?', 'buddyblog' ),
-                    'desc'		=> __( 'Please check for https://codex.wordpress.org/Roles_and_Capabilities allowed capabilities.', 'buddyblog' ),
-                    'type'		=> 'text',
-                    'default'	=> 'read',//subscriber
+                    'name'		=> 'allow_unpublishing',
+                    'label'		=> __( 'Allow users to unpublish their own post?', 'buddyblog' ),
+                    'desc'		=> '',
+                    'type'		=> 'radio',
+                    'default'	=> 0,
+                    'options'	=> array(
+							1 => __( 'Yes', 'buddyblog' ),
+							0 => __( 'No', 'buddyblog' ),  
+                    ),
                                         
                 ),
                 array(
@@ -222,9 +232,9 @@ class BuddyBlog_Admin {
      * @return array settings fields
      */
     
-    public function admin_css(){
+    public function admin_css() {
         
-        if( !isset( $_GET['page'] ) || $_GET['page'] !='buddyblog' )
+        if( ! isset( $_GET['page'] ) || $_GET['page'] != 'buddyblog' )
             return;
         
         ?>

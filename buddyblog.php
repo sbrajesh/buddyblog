@@ -40,22 +40,23 @@ function buddyblog_install() {
     
 	$default = array(
 		//'root_slug'			=> 'buddyblog',
-        'post_type'			=> 'post',
-		'post_status'		=> 'publish',
-		'comment_status'	=> 'open',
+        'post_type'				=> 'post',
+		'post_status'			=> 'publish',
+		'comment_status'		=> 'open',
 		'show_comment_option'	=> 1,
 		'custom_field_title'	=> '',
 		'enable_taxonomy'		=> 1,
+		'allowed_taxonomies'	=> 1,
 		'enable_category'		=> 1,
 		'enable_tags'			=> 1,
 		'show_posts_on_profile' => false,
-		'limit_no_of_posts' => false,
+		'limit_no_of_posts'		=> false,
 		'max_allowed_posts'		=> 20,
-		'publish_cap'	=> '',
-		'allow_unpublishing'	=> 'read',//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
-		'post_cap'		=> 'read',
-		'allow_edit'	=> 1,
-		'allow_delete'	=> 1,
+		'publish_cap'			=> 'read',
+		'allow_unpublishing'	=> 1,//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
+		'post_cap'				=> 'read',
+		'allow_edit'			=> 1,
+		'allow_delete'			=> 1,
 		
 		//'enabled_tags'			=> 1,
         //'taxonomies'		=> array( 'category' ),

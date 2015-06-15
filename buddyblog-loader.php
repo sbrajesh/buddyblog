@@ -113,7 +113,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 		}	
 		// Add the Group Invites nav item
         $sub_nav[] = array(
-			'name'            => bp_is_my_profile() ? __( 'My Posts', 'buddyblog' ) : sprintf( __( '%s\' Posts', 'buddyblog' ),  bp_get_displayed_user_fullname() ),
+			'name'            =>__( 'Posts', 'buddyblog' ) ,
 			'slug'            => BUDDYBLOG_ARCHIVE_SLUG,
 			'parent_url'      => $blog_link,
 			'parent_slug'     => $this->slug,
@@ -152,7 +152,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 			$user_domain = bp_loggedin_user_domain();
 			$blog_link = trailingslashit( $user_domain . $this->slug );
 
-			$title   = __( 'My Posts',             'buddyblog' );
+			$title   = __( 'Posts',             'buddyblog' );
 			// My Posts
 			$wp_admin_nav[] = array(
 				'parent' => $bp->my_account_menu_id,
@@ -179,7 +179,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 
 			if ( bp_is_my_profile() && ! bp_is_single_item() ) {
 
-				$bp->bp_options_title = __( 'My Posts', 'buddyblog' );
+				$bp->bp_options_title = __( 'Posts', 'buddyblog' );
 
 			} elseif ( ! bp_is_my_profile() && ! bp_is_single_item() ) {
 

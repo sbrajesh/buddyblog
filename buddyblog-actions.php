@@ -162,32 +162,32 @@ class BuddyBlog_Actions {
 			),      
 			
 			'upload_count'			=> 0,
-			'has_post_thumbnail'	=> 1
+			'has_post_thumbnail'	=> 1,
+			'current_user_can_post' => current_user_can( buddyblog_get_option( 'post_cap' ) ),
 		);
 		
 		if( buddyblog_get_option( 'enable_taxonomy' ) ) {
 			
+			$taxonomies = array();
+			$tax = buddyblog_get_option( 'allowed_taxonomies' );
 			
-			$tax = array();
-			if( buddyblog_get_option( 'enable_category' ) ) {
+			if( !empty( $tax ) ){
 				
-				$tax['category']	= array(
-					'taxonomy'		=> 'category',
-					'view_type'		=> 'checkbox'
-				);
-			}	
-			
-			if ( buddyblog_get_option( 'enable_tag' ) ) {
-			
-				$tax['post_tag'] = array(
-					'taxonomy'		=>'post_tag',
-					'view_type'		=>'checkbox'
-				);
-
+				foreach( (array) $tax as $tax_name ) {
+					$view = 'checkbox';
+					//is_taxonomy_hierarchical($tax_name);
+					
+					$taxonomies[$tax_name] = array(
+						'taxonomy'		=> $tax_name,
+						'view_type'		=> 'checkbox',//currently only checkbox
+					);
+					
+				}
 			}
 			
-			if( ! empty( $tax ) )
-				$settings['tax'] = $tax;
+			if( !empty( $taxonomies ) )
+				$settings['tax'] = $taxonomies;
+			
 		}
 	   //use it to add extra fields or filter the post type etc
 

@@ -26,7 +26,7 @@ function buddyblog_user_can_publish ( $user_id, $post_id = false ) {
 	//by default, everyone can publish, we assume
 	if ( is_user_logged_in() ) {
 		
-		$can_publish = true;
+		$can_publish = current_user_can( buddyblog_get_option( 'publish_cap' ) );
 	}	
 	//has the admin set a limit on no. of posts?
 	if ( is_user_logged_in() && buddyblog_limit_no_of_posts() ) {
