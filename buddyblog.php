@@ -70,6 +70,25 @@ function buddyblog_install() {
 }
 register_activation_hook( __FILE__, 'buddyblog_install' );
 
+add_action( 'bp_init', 'buddyblog_load_textdomain', 2 );
+    //localization
+function buddyblog_load_textdomain() {
+
+
+	$locale = get_locale();
+
+	// if load .mo file
+	if ( ! empty( $locale ) ) {
+		$mofile_default = sprintf( '%slanguages/%s.mo', plugin_dir_path( __FILE__ ), $locale );
+
+		$mofile = apply_filters( 'buddyblog_load_mofile', $mofile_default );
+		// make sure file exists, and load it
+		if ( file_exists( $mofile ) ) {
+			load_textdomain( 'buddyblog', $mofile );
+		}
+	}
+}
+
 /**
  * Load comment reply script on single post
  */
