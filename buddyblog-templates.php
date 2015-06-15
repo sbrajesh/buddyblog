@@ -106,6 +106,10 @@ function buddyblog_get_edit_url( $post_id = false ) {
  */
 function buddyblog_get_edit_link( $id = 0, $label = 'Edit' ) {
     
+	
+	if( ! buddyblog_get_option( 'allow_edit' ) )
+		return '';
+	
     $url = buddyblog_get_edit_url( $id );
     
     if( ! $url ) {
