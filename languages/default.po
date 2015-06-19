@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BuddyBlog\n"
-"POT-Creation-Date: 2015-06-16 03:22+0530\n"
-"PO-Revision-Date: 2015-06-16 03:22+0530\n"
+"POT-Creation-Date: 2015-06-19 19:19+0530\n"
+"PO-Revision-Date: 2015-06-19 19:19+0530\n"
 "Last-Translator: Brajesh Singh\n"
 "Language-Team: BuddyDev Team\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgid "Post unpublished"
 msgstr ""
 
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:21
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:224
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:232
 msgid "BuddyBlog"
 msgstr ""
 
@@ -123,7 +123,7 @@ msgstr ""
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:148
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:176
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:196
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:208
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:216
 msgid "Yes"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr ""
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:149
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:177
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:197
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:209
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:217
 msgid "No"
 msgstr ""
 
@@ -213,14 +213,24 @@ msgid "if you disable it, user will not be able to edit their own post."
 msgstr ""
 
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:203
-msgid "Allow user to delete their post?"
+msgid "Which capability can edit post in backend(WordPress Dashboard)?"
 msgstr ""
 
 #: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:204
+msgid ""
+"User with these capabilities will nto be redirected to front end editor for "
+"editing post., user will not be able to edit their own post."
+msgstr ""
+
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:211
+msgid "Allow user to delete their post?"
+msgstr ""
+
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:212
 msgid "if you disable it, user will not be able to delete their own post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:224
+#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:232
 msgid "BuddyBlog Settings"
 msgstr ""
 
