@@ -167,7 +167,7 @@ function buddyblog_fix_edit_post_link( $edit_url, $post_id, $context ) {
 		
 	}
 	
-   if ( $post->post_author == get_current_user_id() )
+   if ( $post->post_author == get_current_user_id() && ! current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) )
        return buddyblog_get_edit_url( $post_id );
    
    return $edit_url;

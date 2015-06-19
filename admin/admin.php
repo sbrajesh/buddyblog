@@ -199,6 +199,14 @@ class BuddyBlog_Admin {
                 ),    
             
                 array(
+                    'name'		=> 'dashboard_edit_cap',
+                    'label'		=> __( 'Which capability can edit post in backend(WordPress Dashboard)?', 'buddyblog' ),
+                    'desc'		=> __( 'User with these capabilities will nto be redirected to front end editor for editing post., user will not be able to edit their own post.', 'buddyblog' ),
+                    'type'		=> 'text',
+                    'default'	=> 'publish_posts',
+                ),    
+            
+                array(
                     'name'		=> 'allow_delete',
                     'label'		=> __( 'Allow user to delete their post?', 'buddyblog' ),
                     'desc'		=> __( 'if you disable it, user will not be able to delete their own post.', 'buddyblog' ),

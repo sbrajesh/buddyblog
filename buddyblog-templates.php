@@ -93,6 +93,8 @@ function buddyblog_get_edit_url( $post_id = false ) {
 	}
 	
     $action_name = 'edit';
+	if( current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) )
+		return get_edit_post_link ( $post );
 	
     //if we are here, we can allow user to edit the post
     return bp_core_get_user_domain( $post->post_author ) . $bp->buddyblog->slug . "/{$action_name}/" . $post->ID . '/';
