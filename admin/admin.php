@@ -154,7 +154,7 @@ class BuddyBlog_Admin {
                     'name'		=> 'max_allowed_posts',
                     'label'		=> __( 'How many posts a user can create?', 'buddyblog' ),
                     'desc'		=> __( 'Only applies if you have enabled the limit on posts from above option.', 'buddyblog' ),
-                    'type'		=> 'number',
+                    'type'		=> 'text',
                     'default'	=> 10,
                                         
                 ),
