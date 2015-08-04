@@ -30,7 +30,7 @@
 
         <div class="post-entry">
 
-            <p class="alignright"><?php printf( __( 'Postend on %1$s', 'buddyblog' ), get_the_time('m/j/Y') ); ?></p>
+            <p class="alignright"><?php printf( __( 'Posted on %1$s', 'buddyblog' ), get_the_time( get_option( 'date_format' ) ) ); ?></p>
 
             <div class="clear"></div>
             
