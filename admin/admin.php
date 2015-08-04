@@ -105,6 +105,18 @@ class BuddyBlog_Admin {
                     
                 ),
                 array(
+                    'name'		=> 'post_update_redirect',
+                    'label'		=> __( 'Where to redirect after creating/updating post?', 'buddyblog' ),
+                    'desc'		=> __( 'If you select archive, user will be redirected to the post list, if single, user will be redirected to single post page if the post is published.', 'buddyblog' ),
+                    'type'		=> 'select',
+                    'default'	=> 'archive',
+                    'options'	=> array(
+							'archive'	=> __( 'Archive page', 'buddyblog' ),
+							'single'	=> __( 'Single post page', 'buddyblog' ),  
+                    ),
+                    
+                ),
+                array(
                     'name'		=> 'enable_taxonomy',
                     'label'		=> __( 'Enable Taxonomy?', 'buddyblog' ),
                     'desc'		=> __( 'If you enable, users will be able to select terms from the selected taxonomies.', 'buddyblog' ),
@@ -137,6 +149,7 @@ class BuddyBlog_Admin {
                     ),
                     
                 ),
+
             
                 array(
                     'name'		=> 'limit_no_of_posts',

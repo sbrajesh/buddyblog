@@ -346,7 +346,8 @@ function buddyblog_get_settings() {
 		//'enabled_tags'			=> 1,
         //'taxonomies'		=> array( 'category' ),
         'allow_upload'		=> false,
-        'max_upload_count'	=> 2
+        'max_upload_count'	=> 2,
+		'post_update_redirect'	=> 'archive'
         );
     
     return bp_get_option( 'buddyblog-settings', $default );

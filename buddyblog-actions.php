@@ -127,7 +127,32 @@ class BuddyBlog_Actions {
          
     }
     
-    
+	/**
+	 * This gets called when a post is saved/updated in the database
+	 * after create/edit action handled by BP simple front end post plugin
+	 *  
+	 * @param int $post_id
+	 * @param boolean $is_new
+	 * @param type $form_object
+	 */
+    public function on_save( $post_id, $is_new , $form_object  ) {
+		
+		$post_redirect = buddyblog_get_option( 'post_update_redirect' );
+		
+		$url = '';
+		if ( $post_redirect == 'archive' ) {
+			
+			$url = buddyblog_get_home_url();
+			
+		} elseif( $post_redirect == 'single' && get_post_status( $post_id ) =='publish' ) {
+			//go to single post
+			$url = get_permalink( $post_id );
+		}
+		
+		if( $url ){
+			bp_core_redirect( $url );
+		}
+	}
 
 	/**
 	 * register post form for Posting/editing
@@ -164,6 +189,7 @@ class BuddyBlog_Actions {
 			'upload_count'			=> 0,
 			'has_post_thumbnail'	=> 1,
 			'current_user_can_post' => current_user_can( buddyblog_get_option( 'post_cap' ) ),
+			'update_callback'		=> array( $this, 'on_save' ),
 		);
 		
 		if( buddyblog_get_option( 'enable_taxonomy' ) ) {
