@@ -84,6 +84,19 @@ class BuddyBlog_Admin {
                     
                 ),
                 array(
+                    'name'		=> 'allow_upload',
+                    'label'		=> __( 'Allow Upload?', 'buddyblog' ),
+                    'desc'		=> __( 'Want to allow user to upload?', 'buddyblog' ),
+                    'type'		=> 'select',
+                    'default'	=> 1,
+                    'options'	=> array(
+						1 => __( 'Yes', 'buddyblog' ),
+						0 => __( 'No', 'buddyblog' ),
+						
+					),
+                    
+                ),
+                array(
                     'name'		=> 'comment_status',
                     'label'		=> __( 'Comment status?', 'buddyblog' ),
                     'desc'		=> __( 'Do you want to allow commenting on user posts?', 'buddyblog' ),

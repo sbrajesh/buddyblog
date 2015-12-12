@@ -342,7 +342,7 @@ function buddyblog_get_settings() {
 		'post_cap'				=> 'read',
 		'allow_edit'			=> 1,
 		'allow_delete'			=> 1,
-		
+		'allow_upload'			=> 1,
 		//'enabled_tags'			=> 1,
         //'taxonomies'		=> array( 'category' ),
         'allow_upload'		=> false,

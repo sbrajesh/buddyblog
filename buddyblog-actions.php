@@ -185,7 +185,7 @@ class BuddyBlog_Actions {
 					'default' => 1
 				)
 			),      
-			
+			'allow_upload'			=> buddyblog_get_option( 'allow_upload' ),
 			'upload_count'			=> 0,
 			'has_post_thumbnail'	=> 1,
 			'current_user_can_post' => current_user_can( buddyblog_get_option( 'post_cap' ) ),
