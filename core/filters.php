@@ -35,7 +35,7 @@ function buddyblog_get_editable_post_id( $id ) {
     
     $action = bp_current_action();
     
-	if( bp_is_buddyblog_component() && ( $action == 'edit' ) ) {
+	if( bp_is_buddyblog_component() && ( $action == 'edit' ) && bp_action_variable( 0 ) ) {
 		
           $id = bp_action_variable( 0 );
     }

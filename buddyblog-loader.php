@@ -74,7 +74,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 	 * Sets up user tabs
 	 * 
 	 */
-	public function setup_nav( $main_nav = array(), $main_nav = array() ) {
+	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
 		// Define local variables
 		$sub_nav = array();
