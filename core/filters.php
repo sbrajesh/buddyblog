@@ -100,8 +100,10 @@ function buddyblog_publish_unpublish_on_save( $post_id ) {
 function buddyblog_fix_permalink( $permalink, $post, $leavename, $sample ) {
 	
    
-    if ( ! buddyblog_show_posts_on_profile( $post ) )
+    if ( ! buddyblog_show_posts_on_profile( $post ) ) {
         return $permalink;
+	}
+	
     
     $type = buddyblog_get_posttype();
     

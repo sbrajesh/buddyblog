@@ -317,6 +317,16 @@ function buddyblog_get_option( $option_name ) {
 	
 }
 /**
+ * Was this post posted by buddyblog
+ * 
+ * @param int $post_id
+ * @return boolean
+ */
+function buddyblog_is_buddyblog_post( $post_id ) {
+	
+	return get_post_meta( $post_id, '_is_buddyblog_post', true );
+}
+/**
  * Get BuddyBlog Settings
  * 
  * @return type
