@@ -53,8 +53,9 @@ class BuddyBlog_Core_Component extends BP_Component {
 	public function setup_globals( $globals = array() ) {
 		
 		// Define a slug, if necessary
-		if ( ! defined( 'BP_BUDDYBLOG_SLUG' ) )
+		if ( ! defined( 'BP_BUDDYBLOG_SLUG' ) ) {
 			define( 'BP_BUDDYBLOG_SLUG', $this->id );
+		}
 		
 		$globals = array(
 			'slug'                  => BP_BUDDYBLOG_SLUG,
@@ -82,13 +83,11 @@ class BuddyBlog_Core_Component extends BP_Component {
 
 		$total_posts = 0;
 		
-		if( bp_is_my_profile() ) {
+		if ( bp_is_my_profile() ) {
 			$total_posts = buddyblog_get_total_posted( bp_displayed_user_id() );
 
-		}else{
-
+		} else {
 		   $total_posts = buddyblog_get_total_published_posts( bp_displayed_user_id() );
-
 		}
                 
         //
@@ -103,12 +102,9 @@ class BuddyBlog_Core_Component extends BP_Component {
 		);
                 
 		//whether to link to logged in user or displayed user
-		if( ! bp_is_my_profile() ) {
-			
+		if ( ! bp_is_my_profile() ) {
 			$blog_link = trailingslashit( bp_displayed_user_domain() . $this->slug );
-		
-		}else {
-		
+		} else {
 			$blog_link = trailingslashit( bp_loggedin_user_domain() . $this->slug );
 		}	
 		// Add the Group Invites nav item
@@ -147,7 +143,6 @@ class BuddyBlog_Core_Component extends BP_Component {
 
 		// Menus for logged in user
 		if ( is_user_logged_in() ) {
-
 			// Setup the logged in user variables
 			$user_domain = bp_loggedin_user_domain();
 			$blog_link = trailingslashit( $user_domain . $this->slug );
@@ -211,5 +206,3 @@ function bp_setup_buddyblog() {
 	buddypress()->buddyblog = new BuddyBlog_Core_Component();
 }
 add_action( 'bp_loaded', 'bp_setup_buddyblog');
-
-

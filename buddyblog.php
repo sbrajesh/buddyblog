@@ -12,8 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define( 'BP_BUDDYBLOG_PLUGIN_DIR',  plugin_dir_path( __FILE__ ) );
 define( 'BP_BUDDYBLOG_PLUGIN_URL',  plugin_dir_url( __FILE__ ) );
 
-if( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) )
+if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
     define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
+}
 
 /**
  * Include the component loader
@@ -24,8 +25,9 @@ function buddyblog_load_component() {
 	
     include_once $path . 'buddyblog-loader.php';
 	
-	if( is_admin() && ! defined( 'DOING_AJAX' ) )
+	if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
 		require_once $path . 'admin/admin.php';
+	}
 	
 }
 add_action( 'bp_include', 'buddyblog_load_component' );
@@ -64,8 +66,9 @@ function buddyblog_install() {
         'max_upload_count'	=> 2
     );
 	
-	if( ! get_site_option( 'buddyblog-settings' ) )
+	if ( ! get_site_option( 'buddyblog-settings' ) ) {
 		add_site_option( 'buddyblog-settings', $default );
+	}
 	
 }
 register_activation_hook( __FILE__, 'buddyblog_install' );
@@ -96,7 +99,7 @@ function buddyblog_load_textdomain() {
 //add_action('bp_enqueue_scripts','buddyblog_load_comment_js');
 function buddyblog_load_comment_js() {
 	
-    if( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) ) {
+    if ( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) ) {
      
 		wp_enqueue_script( 'comment-reply' );
 	}	

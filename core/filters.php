@@ -35,9 +35,9 @@ function buddyblog_get_editable_post_id( $id ) {
     
     $action = bp_current_action();
     
-	if( bp_is_buddyblog_component() && ( $action == 'edit' ) && bp_action_variable( 0 ) ) {
+	if ( bp_is_buddyblog_component() && ( $action == 'edit' ) && bp_action_variable( 0 ) ) {
 		
-          $id = bp_action_variable( 0 );
+        $id = bp_action_variable( 0 );
     }
     return intval ( $id );//intval or absint?
     
@@ -72,7 +72,7 @@ add_filter( 'bsfep_post_success_message', 'buddyblog_filter_posting_message', 10
 //add_action('bsfep_post_saved','buddyblog_publish_unpublish_on_save');
 function buddyblog_publish_unpublish_on_save( $post_id ) {
 	
-	if( ! empty( $_POST['post_id'] ) ) {
+	if ( ! empty( $_POST['post_id'] ) ) {
 		return;
 	}
 	
@@ -84,7 +84,7 @@ function buddyblog_publish_unpublish_on_save( $post_id ) {
 	}
    
    //if it is a new post
-    if( buddyblog_user_can_publish( get_current_user_id() ) ) {
+    if ( buddyblog_user_can_publish( get_current_user_id() ) ) {
     //    $active_status=1;
         
     }
@@ -169,8 +169,9 @@ function buddyblog_fix_edit_post_link( $edit_url, $post_id, $context ) {
 		
 	}
 	
-   if ( $post->post_author == get_current_user_id() && ! current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) )
+   if ( $post->post_author == get_current_user_id() && ! current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) ) {
        return buddyblog_get_edit_url( $post_id );
+   }
    
    return $edit_url;
    
@@ -188,13 +189,15 @@ function buddyblog_add_user_can_edit_cap( $allcaps, $cap, $args ) {
 	
     $post_type_obj = get_post_type_object( buddyblog_get_posttype() );
     
-    if ( $post_type_obj->cap->edit_post != $args[0] )
+    if ( $post_type_obj->cap->edit_post != $args[0] ) {
 		return $allcaps;
+	}
     
     $post_id = $args[2];
     
-    if( buddyblog_user_can_edit( $post_id ) )
-        $allcaps[$cap[0]] = true;
+    if ( buddyblog_user_can_edit( $post_id ) ) {
+        $allcaps[ $cap[0] ] = true;
+	}
     
     return $allcaps;
 	// give author some permissions

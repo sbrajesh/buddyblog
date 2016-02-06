@@ -4,33 +4,31 @@
  */
 ?>
 
-<?php if( buddyblog_user_has_posted() ): ?>
+<?php if ( buddyblog_user_has_posted() ): ?>
 <?php
     //let us build the post query
     if ( bp_is_my_profile() || is_super_admin() ) {
-        
-		$status = 'any';
-		
+ 		$status = 'any';
 	} else {
-     
 		$status = 'publish';
 	}
 	
-    $paged = bp_action_variable(1);
-    $paged = $paged?$paged:1;
-    $query_args = array(
+    $paged = bp_action_variable( 1 );
+    $paged = $paged ? $paged : 1;
+    
+	$query_args = array(
 		'author'        => bp_displayed_user_id(),
 		'post_type'     => buddyblog_get_posttype(),
 		'post_status'   => $status,
 		'paged'         => intval( $paged )
     );
-
+	//do the query
     query_posts( $query_args );
 	?>
     
-	<?php if( have_posts() ): ?>
+	<?php if ( have_posts() ): ?>
 		
-		<?php while( have_posts() ): the_post();
+		<?php while ( have_posts() ): the_post();
 			global $post;
 		?>
 
@@ -80,16 +78,16 @@
             <div class="pagination">
                 <?php buddyblog_paginate(); ?>
             </div>
-    <?php else:?>
+    <?php else: ?>
             <p><?php _e( 'There are no posts by this user at the moment. Please check back later!', 'buddyblog' );?></p>
-    <?php endif;?>
+    <?php endif; ?>
 
     <?php 
        wp_reset_postdata();
        wp_reset_query();
     ?>
 
-<?php elseif( bp_is_my_profile() && buddyblog_user_can_post( get_current_user_id() ) ):?>
+<?php elseif ( bp_is_my_profile() && buddyblog_user_can_post( get_current_user_id() ) ): ?>
     <p> <?php _e( "You haven't posted anything yet.", 'buddyblog' );?> <a href="<?php echo buddyblog_get_new_url();?>"> <?php _e( 'New Post', 'buddyblog' );?></a></p>
 
 <?php endif; ?>

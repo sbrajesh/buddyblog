@@ -21,9 +21,8 @@ class BuddyBlog_Screens {
 
     public static function get_instance() {
         
-        if( is_null( self::$instance ) ) {
-        
-			self::$instance=new self();
+        if ( is_null( self::$instance ) ) {
+        	self::$instance=new self();
 		}
 		
         return self::$instance;
@@ -34,12 +33,9 @@ class BuddyBlog_Screens {
      */
     public function my_posts() {
          
-        if( buddyblog_is_single_post() ) {
-          
+        if ( buddyblog_is_single_post() ) {
 			add_action( 'bp_template_content', array( $this, 'get_single_post_data' ) );
-		
 		} else { //list all posts by user
-         
 			add_action( 'bp_template_content', array( $this, 'get_posts_list_data' ) );
 		}
 		

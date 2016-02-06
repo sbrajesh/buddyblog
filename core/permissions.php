@@ -34,8 +34,9 @@ function buddyblog_user_can_publish ( $user_id, $post_id = false ) {
 		//find remaining posts count
 		$remaining_posts = buddyblog_get_remaining_posts( $user_id );
 		
-		if ( $remaining_posts > 0 )
+		if ( $remaining_posts > 0 ) {
 			$can_publish = 1;
+		}
 	}
 
 	return apply_filters( 'buddyblog_user_can_publish', $can_publish, $user_id );
@@ -87,7 +88,7 @@ function buddyblog_user_can_post ( $user_id = false ) {
 	//non logged in users can not post 
 	$can_post = false;
 
-	if( current_user_can( buddyblog_get_option( 'post_cap' ) ) ) {
+	if ( current_user_can( buddyblog_get_option( 'post_cap' ) ) ) {
 		$can_post = true;
 	}
 	
@@ -147,7 +148,7 @@ function buddyblog_user_can_delete ( $post_id, $user_id = false ) {
 	if ( is_super_admin() ) {
 		return true;
 		
-	}elseif( ! buddyblog_get_option( 'allow_delete') ) {
+	} elseif ( ! buddyblog_get_option( 'allow_delete') ) {
 		//if deleting post is disabled
 		return false;
 	}

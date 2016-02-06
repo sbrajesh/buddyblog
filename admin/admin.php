@@ -53,12 +53,12 @@ class BuddyBlog_Admin {
 
 		$taxonomies = get_object_taxonomies( $default_post_type );
 		
-		if( isset( $taxonomies['post_format'] ) ) {
+		if ( isset( $taxonomies['post_format'] ) ) {
 			unset( $taxonomies['post_format'] );
 		}
 		$tax= array();
 		
-		foreach( $taxonomies  as $taxonomy ) {
+		foreach ( $taxonomies  as $taxonomy ) {
 			$tax_object = get_taxonomy( $taxonomy );
 			$tax[$taxonomy] = $tax_object->labels->name;
 		}
@@ -268,8 +268,9 @@ class BuddyBlog_Admin {
     
     public function admin_css() {
         
-        if( ! isset( $_GET['page'] ) || $_GET['page'] != 'buddyblog' )
+        if ( ! isset( $_GET['page'] ) || $_GET['page'] != 'buddyblog' ) {
             return;
+		}
         
         ?>
 

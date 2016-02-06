@@ -17,8 +17,9 @@ class BuddyBlog_Actions {
         /**
          * Register form for new/edit resume
          */
-        if( is_admin() )
+        if ( is_admin() ) {
             return;
+		}
         
         add_action( 'bp_init',    array( $this, 'register_form' ), 7 );
         add_action( 'bp_actions', array( $this, 'publish' ) );
@@ -33,9 +34,11 @@ class BuddyBlog_Actions {
 	 */
     public static function get_instance() {
         
-        if( !isset ( self::$instance ) )
-                self::$instance = new self();
-        return self::$instance;
+        if ( ! isset ( self::$instance ) ) {
+            self::$instance = new self();
+		}
+        
+		return self::$instance;
     }
     
     /**
@@ -55,17 +58,17 @@ class BuddyBlog_Actions {
      */
     public function delete() {
         
-		if( !( bp_is_buddyblog_component() && bp_is_current_action( 'delete' ) ) )
+		if ( ! ( bp_is_buddyblog_component() && bp_is_current_action( 'delete' ) ) ) {
 		 return;
+		}
           
         $post_id = bp_action_variable( 0 );
 		
-        if( ! $post_id )
+        if ( ! $post_id ) {
             return;
-        
-      
+		}
          
-        if( buddyblog_user_can_delete( $post_id,  get_current_user_id() ) ) {
+        if ( buddyblog_user_can_delete( $post_id,  get_current_user_id() ) ) {
 
             wp_delete_post( $post_id, true );
             bp_core_add_message ( __( 'Post deleted successfully' ), 'buddyblog' );
@@ -73,9 +76,8 @@ class BuddyBlog_Actions {
             wp_redirect( buddyblog_get_home_url() );//hardcoding bad
             exit( 0 );  
 			
-        }else{
-         
-            bp_core_add_message ( __( 'You should not perform unauthorized actions', 'buddyblog' ),'error');
+        } else {
+           bp_core_add_message ( __( 'You should not perform unauthorized actions', 'buddyblog' ),'error');
         }
         
     }
@@ -84,15 +86,17 @@ class BuddyBlog_Actions {
      */
     public function publish() {
 		
-       if( ! ( bp_is_buddyblog_component() && bp_is_current_action( 'publish' ) ) )
+		if ( ! ( bp_is_buddyblog_component() && bp_is_current_action( 'publish' ) ) ) {
            return;
+		}
            
-        $id = bp_action_variable(0);
+		$id = bp_action_variable( 0 );
 		
-        if( ! $id )
+        if ( ! $id ) {
             return;
+		}
        
-        if( buddyblog_user_can_publish( get_current_user_id(), $id ) ) {
+        if ( buddyblog_user_can_publish( get_current_user_id(), $id ) ) {
 			
             wp_publish_post( $id );//change status to publish         
             bp_core_add_message( __( 'Post Published', 'buddyblog' ) );   
@@ -105,15 +109,17 @@ class BuddyBlog_Actions {
      */
     public function unpublish() {
 		
-         if( !( bp_is_buddyblog_component() && bp_is_current_action( 'unpublish' ) ) )
+         if ( ! ( bp_is_buddyblog_component() && bp_is_current_action( 'unpublish' ) ) ) {
            return;
+		 }
 		 
         $id = bp_action_variable( 0 );
         
-		if( ! $id )
+		if ( ! $id ) {
             return;
-         
-		if( buddyblog_user_can_unpublish( get_current_user_id(), $id ) ) {
+		}
+		
+		if ( buddyblog_user_can_unpublish( get_current_user_id(), $id ) ) {
                
 			$post = get_post( $id, ARRAY_A );
 			$post['post_status'] = 'draft';
@@ -144,12 +150,12 @@ class BuddyBlog_Actions {
 			
 			$url = buddyblog_get_home_url();
 			
-		} elseif( $post_redirect == 'single' && get_post_status( $post_id ) =='publish' ) {
+		} elseif ( $post_redirect == 'single' && get_post_status( $post_id ) =='publish' ) {
 			//go to single post
 			$url = get_permalink( $post_id );
 		}
 		
-		if( $url ){
+		if ( $url ) {
 			bp_core_redirect( $url );
 		}
 	}
@@ -162,14 +168,16 @@ class BuddyBlog_Actions {
 	public function register_form() {
 		
 		//make sure the Front end simple post plugin is active
-		if( ! function_exists( 'bp_new_simple_blog_post_form' ) )
+		if ( ! function_exists( 'bp_new_simple_blog_post_form' ) ) {
 			return;
+		}
 
 		$post_status = buddyblog_get_option( 'post_status' );
 		$user_id = get_current_user_id();
 
-		 if( ! buddyblog_user_can_post( $user_id ) )
+		if ( ! buddyblog_user_can_post( $user_id ) ) {
 			 $post_status = 'draft';
+		}
 
 
 		$settings = array(
@@ -192,14 +200,14 @@ class BuddyBlog_Actions {
 			'update_callback'		=> array( $this, 'on_save' ),
 		);
 		
-		if( buddyblog_get_option( 'enable_taxonomy' ) ) {
+		if ( buddyblog_get_option( 'enable_taxonomy' ) ) {
 			
 			$taxonomies = array();
 			$tax = buddyblog_get_option( 'allowed_taxonomies' );
 			
-			if( !empty( $tax ) ){
+			if ( ! empty( $tax ) ) {
 				
-				foreach( (array) $tax as $tax_name ) {
+				foreach ( (array) $tax as $tax_name ) {
 					$view = 'checkbox';
 					//is_taxonomy_hierarchical($tax_name);
 					
@@ -211,8 +219,9 @@ class BuddyBlog_Actions {
 				}
 			}
 			
-			if( !empty( $taxonomies ) )
+			if ( ! empty( $taxonomies ) ) {
 				$settings['tax'] = $taxonomies;
+			}
 			
 		}
 	   //use it to add extra fields or filter the post type etc
@@ -220,8 +229,6 @@ class BuddyBlog_Actions {
 		$settings = apply_filters( 'buddyblog_post_form_settings', $settings );
 
 		bp_new_simple_blog_post_form( 'buddyblog-user-posts', $settings );// the blog form
-
-
 
 	}
 }    

@@ -22,8 +22,9 @@ function bp_is_buddyblog_component() {
 function buddyblog_get_posttype() {
 	$post_type = buddyblog_get_option( 'post_type' );
 	
-	if( ! $post_type )
+	if ( ! $post_type ) {
 		$post_type = 'post';
+	}
 	
     return apply_filters( 'buddyblog_get_post_type', $post_type );
 	
@@ -49,14 +50,14 @@ function buddyblog_get_taxonomies() {
 
 function buddyblog_get_total_posted( $user_id = false ) {
 	
-    if( ! $user_id )
+    if ( ! $user_id ) {
         $user_id = bp_displayed_user_id ();
+	}
 	
     //Needs revisist
     global $wpdb;
     
 	$count = $wpdb->get_var( $wpdb->prepare( "SELECT count('*') FROM {$wpdb->posts} WHERE post_author=%d AND post_type=%s AND (post_status='publish'||post_status='draft')", $user_id, buddyblog_get_posttype() ) );
-
     
     return intval( $count);
 }
@@ -68,8 +69,9 @@ function buddyblog_get_total_posted( $user_id = false ) {
  */
 function buddyblog_get_total_published_posts( $user_id = false ) {
 	
-    if( ! $user_id )
+    if ( ! $user_id ) {
         $user_id = get_current_user_id ();
+	}
     //Needs revisist
     global $wpdb;
    
@@ -85,8 +87,9 @@ function buddyblog_get_total_published_posts( $user_id = false ) {
  */
 function buddyblog_get_allowed_no_of_posts( $user_id = false ) {
 	
-    if( ! $user_id )
+    if ( ! $user_id ) {
         $user_id = bp_displayed_user_id ();
+	}
     //filter on this hook to change the no. of posts allowed
     return apply_filters( 'buddyblog_allowed_posts_count', buddyblog_get_option( 'max_allowed_posts' ), $user_id );//by default no. posts allowed
 }
@@ -112,19 +115,16 @@ function buddyblog_is_single_post() {
     $post_id = 0; 
     //make sure 
     //check the strategy
-    if( buddyblog_use_slug_in_permalink() ) {
-        
-        $slug = bp_action_variable(0);
-        
+    if ( buddyblog_use_slug_in_permalink() ) {
+		$slug = bp_action_variable( 0 );
         $post_id = buddyblog_get_post_id_from_slug( $slug );
-        
-    }else {   
-       
+     } else {   
 		$post_id = intval( bp_action_variable(0) );
 	}
 	
-    if( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && ! empty( $post_id )  )
+    if ( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && ! empty( $post_id ) ) {
         return true;
+	}
     
     return false;
 }
@@ -135,10 +135,11 @@ function buddyblog_is_single_post() {
 function buddyblog_is_posts_archive() {
 	
     $action = bp_current_action();
-    $post_id = bp_action_variable(0);
+    $post_id = bp_action_variable( 0 );
 	
-    if( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && empty( $post_id ) )
+    if ( bp_is_buddyblog_component() && $action == BUDDYBLOG_ARCHIVE_SLUG && empty( $post_id ) ) {
         return true;
+	}
     
 	return false;
 }
@@ -149,10 +150,12 @@ function buddyblog_is_posts_archive() {
 function buddyblog_is_edit_post() {
 	
     $action = bp_current_action();
-    $post_id = bp_action_variable(0);
+    $post_id = bp_action_variable( 0 );
     
-	if( bp_is_buddyblog_component() && $action == 'edit' && ! empty( $post_id ) )
+	if ( bp_is_buddyblog_component() && $action == 'edit' && ! empty( $post_id ) ) {
         return true;
+	}
+	
     return false;
 }
 /**
@@ -162,10 +165,11 @@ function buddyblog_is_edit_post() {
 function buddyblog_is_new_post() {
 	
     $action = bp_current_action();
-    $post_id = bp_action_variable(0);
+    $post_id = bp_action_variable( 0 );
 	
-    if( bp_is_buddyblog_component() && $action == 'edit' && empty( $post_id ) )
+    if ( bp_is_buddyblog_component() && $action == 'edit' && empty( $post_id ) ) {
         return true;
+	}
 	
     return false;
 }
@@ -180,7 +184,7 @@ function buddyblog_user_has_posted() {
 	
     $total_posts = buddyblog_get_total_posted();
     
-    return (bool)$total_posts;
+    return (bool) $total_posts;
 }
 /**
  * Get the url of the BuddyBlog component for the given user
@@ -191,9 +195,9 @@ function buddyblog_user_has_posted() {
  */
 function buddyblog_get_home_url( $user_id = false ) {
 	
-    if( ! $user_id )
+    if ( ! $user_id ) {
         $user_id = get_current_user_id ();
-	
+	}
     
     $url = bp_core_get_user_domain( $user_id ) . buddypress()->buddyblog->slug . '/';
 	
@@ -207,22 +211,22 @@ function buddyblog_get_home_url( $user_id = false ) {
  */  
 function buddyblog_get_post_publish_unpublish_url( $post_id = false ) {
 	
-	if( ! $post_id )
+	if ( ! $post_id ) {
 		return;
+	}
    
 	$post = get_post( $post_id );
 	$url = '';
 	
-	if( buddyblog_user_can_publish( get_current_user_id(), $post_id ) ) {
-       
+	if ( buddyblog_user_can_publish( get_current_user_id(), $post_id ) ) {
        //check if post is published
 		$url = buddyblog_get_home_url( $post->post_author );
 	  
-		if( buddyblog_is_post_published( $post_id ) )
+		if ( buddyblog_is_post_published( $post_id ) ) {
 			$url = $url . 'unpublish/' . $post_id . '/';
-		else
+		} else {
 			$url = $url . 'publish/' . $post_id . '/';
-           
+		}
    }
    
    return $url;
@@ -237,27 +241,31 @@ function buddyblog_get_post_publish_unpublish_url( $post_id = false ) {
  */  
 function buddyblog_get_post_publish_unpublish_link( $post_id = false, $label_ac = 'Publish', $label_de = 'Unpublish' ) {
 	
-	if( ! $post_id )
+	if ( ! $post_id ) {
 		return;
+	}
 	
-   if( ! buddyblog_user_can_publish( get_current_user_id(), $post_id ) )
-		   return ;
+	if ( ! buddyblog_user_can_publish( get_current_user_id(), $post_id ) ) {
+	   return ;
+	}
+	
 	$post = get_post( $post_id );
 	
 	$url = '';
 	
-	if( !( is_super_admin() || $post->post_author == get_current_user_id() ) )
+	if ( ! ( is_super_admin() || $post->post_author == get_current_user_id() ) ) {
            return;
-   
-      
+	}
+        
        //check if post is published
     $url = buddyblog_get_post_publish_unpublish_url( $post_id );
 	
-    if( buddyblog_is_post_published( $post_id ) )
+    if ( buddyblog_is_post_published( $post_id ) ) {
 		$link = "<a href='{$url}'>{$label_de}</a>";
-    else
+	} else {
 		$link = "<a href='{$url}'>{$label_ac}</a>";
-     
+	}
+	
 	return $link;
    
 }
@@ -282,13 +290,16 @@ function buddyblog_use_slug_in_permalink() {
  */
 function buddyblog_get_post_id_from_slug( $slug ) {
 	
-    if( ! $slug )
+    if ( ! $slug ) {
         return 0;
+	}
     
     $post = get_page_by_path( $slug, false, buddyblog_get_posttype() );
     
-    if( $post )
+    if ( $post ) {
         return $post->ID;
+	}
+	
     return 0;
     
 }
@@ -299,8 +310,9 @@ function buddyblog_get_post_id_from_slug( $slug ) {
  */
 function buddyblog_get_post_id( $slug_or_id ) {
     
-    if( is_numeric( $slug_or_id ) )
+    if ( is_numeric( $slug_or_id ) ) {
 		return absint( $slug_or_id );
+	}
     //otherwise
     return buddyblog_get_post_id_from_slug( $slug_or_id );
 }
@@ -309,7 +321,7 @@ function buddyblog_get_option( $option_name ) {
 	
 	$settings = buddyblog_get_settings();
 
-	if( isset( $settings[ $option_name ] ) ) {
+	if ( isset( $settings[ $option_name ] ) ) {
 		return $settings[ $option_name ];
 	}
 	

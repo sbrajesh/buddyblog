@@ -13,15 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function buddyblog_load_template( $template ) {
 	
     if ( file_exists( STYLESHEETPATH . '/buddyblog/' . $template ) ) {
-     
-		include_once STYLESHEETPATH . '/buddyblog/' . $template ;
-			
+    	include_once STYLESHEETPATH . '/buddyblog/' . $template ;
 	} elseif ( file_exists( TEMPLATEPATH . '/buddyblog/' . $template ) ) {
-     
 		include_once TEMPLATEPATH . '/buddyblog/' . $template ;
-		
 	} else {
-		
         include_once BP_BUDDYBLOG_PLUGIN_DIR . 'template/buddyblog/' . $template;
 	}	
 }
@@ -40,13 +35,11 @@ function buddyblog_get_post_url( $post_id ) {
 	
     $post = get_post( $post_id );
     
-    if( get_post_type( $post ) != buddyblog_get_posttype() ) {
-     
-		return get_permalink ( $post_id );
-		
+    if ( get_post_type( $post ) != buddyblog_get_posttype() ) {
+  		return get_permalink ( $post_id );
 	}	
     
-    if( buddyblog_use_slug_in_permalink() ) {
+    if ( buddyblog_use_slug_in_permalink() ) {
         
 		$id_or_slug = $post->post_name;
 		
@@ -73,7 +66,7 @@ function buddyblog_get_edit_url( $post_id = false ) {
         return;
 	}
 	
-    if( empty( $post_id ) ) {
+    if ( empty( $post_id ) ) {
      
 		$post_id = get_the_ID();
 		
@@ -82,19 +75,20 @@ function buddyblog_get_edit_url( $post_id = false ) {
     $post = get_post( $post_id );
     //if the author of the post is same as the loggedin user or the logged in user is admin
    
-    if( $post->post_type != buddyblog_get_posttype() ) {
+    if ( $post->post_type != buddyblog_get_posttype() ) {
      
 		return false;
 	}	
    
     
-    if( $post->post_author != $user_id && ! is_super_admin() ) {
+    if ( $post->post_author != $user_id && ! is_super_admin() ) {
 		return ;
 	}
 	
     $action_name = 'edit';
-	if( current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) )
+	if ( current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) ) {
 		return get_edit_post_link ( $post );
+	}
 	
     //if we are here, we can allow user to edit the post
     return bp_core_get_user_domain( $post->post_author ) . $bp->buddyblog->slug . "/{$action_name}/" . $post->ID . '/';
@@ -109,12 +103,13 @@ function buddyblog_get_edit_url( $post_id = false ) {
 function buddyblog_get_edit_link( $id = 0, $label = 'Edit' ) {
     
 	
-	if( ! buddyblog_get_option( 'allow_edit' ) )
+	if ( ! buddyblog_get_option( 'allow_edit' ) ) {
 		return '';
+	}
 	
     $url = buddyblog_get_edit_url( $id );
     
-    if( ! $url ) {
+    if ( ! $url ) {
         return '';
 	}
 	
@@ -129,7 +124,7 @@ function buddyblog_get_edit_link( $id = 0, $label = 'Edit' ) {
  */
 function buddyblog_get_delete_link( $id = 0, $label = 'Delete' ) {
 	
-    if( ! buddyblog_user_can_delete( $id,  get_current_user_id() ) ) {
+    if ( ! buddyblog_user_can_delete( $id,  get_current_user_id() ) ) {
         return;
 	}
 	
@@ -157,7 +152,7 @@ function buddyblog_get_new_url() {
 	
     $user_id = get_current_user_id();
 	
-    if( ! $user_id ) {
+    if ( ! $user_id ) {
         return '';
 	}
     //if we are here, we can allow user to edit the post
@@ -173,18 +168,17 @@ function buddyblog_get_new_url() {
  */
 function buddyblog_get_single_url( $post_id = false ) {
 	
-    if( ! buddyblog_is_single_post() ) {
-     
-		return false;
+    if ( ! buddyblog_is_single_post() ) {
+   		return false;
 	}	
 	
-    if( ! $post_id ) {
-		
+    if ( ! $post_id ) {
 		$post_id = (int) bp_action_variable (0);
 	}
 	
-    if( ! $post_id )
+    if ( ! $post_id ) {
         return '';
+	}
     
     return get_permalink( $post_id );
 }
@@ -203,8 +197,9 @@ function buddyblog_paginate() {
     // only bother with the rest if we have more than 1 page!
     if ( $total > 1 )  {
          // get the current page
-		if ( !$current_page = get_query_var( 'paged' ) )
+		if ( ! $current_page = get_query_var( 'paged' ) ) {
 			 $current_page = 1;
+		}
 		
          // structure of “format” depends on whether we’re using pretty permalinks
         $perma_struct = get_option( 'permalink_structure' );
@@ -212,7 +207,7 @@ function buddyblog_paginate() {
         $format = empty( $perma_struct ) ? '&page=%#%' : 'page/%#%/';
         $base = trailingslashit( buddyblog_get_home_url() . BUDDYBLOG_ARCHIVE_SLUG );
         // echo $base;
-        if( bp_is_buddyblog_component() ) {
+        if ( bp_is_buddyblog_component() ) {
              //$base = $base.'/';
     
         }

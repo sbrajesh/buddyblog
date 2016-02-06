@@ -1,4 +1,4 @@
-<?php if( buddyblog_user_has_posted() ): ?>
+<?php if ( buddyblog_user_has_posted() ): ?>
 <?php
     if ( bp_is_my_profile() || is_super_admin() ) {
         $status = 'any';
@@ -19,7 +19,7 @@
 	// global $withcomments;
 	// $withcomments = true;
 ?>
-<?php while( have_posts() ): the_post(); ?>
+<?php while ( have_posts() ): the_post(); ?>
     
     <?php
         //used to unhook BuddyPress Theme compatibility comment closing function
