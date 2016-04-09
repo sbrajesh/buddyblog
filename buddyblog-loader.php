@@ -90,7 +90,8 @@ class BuddyBlog_Core_Component extends BP_Component {
 		   $total_posts = buddyblog_get_total_published_posts( bp_displayed_user_id() );
 		}
                 
-                apply_filter( 'buddyblog_visible_posts_count', $total_posts, bp_displayed_user_id() );
+                
+                $total_posts = apply_filters( 'buddyblog_visible_posts_count', $total_posts, bp_displayed_user_id() );
         //  
 		// Add 'Blog' to the main navigation
 		$main_nav = array(
