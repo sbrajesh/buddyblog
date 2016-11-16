@@ -1,309 +1,324 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BuddyBlog\n"
-"POT-Creation-Date: 2015-06-19 19:19+0530\n"
-"PO-Revision-Date: 2015-06-19 19:19+0530\n"
-"Last-Translator: Brajesh Singh\n"
+"POT-Creation-Date: 2016-11-16 16:07+0530\n"
+"PO-Revision-Date: 2016-11-16 16:07+0530\n"
+"Last-Translator: BuddyDev.com\n"
 "Language-Team: BuddyDev Team\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-KeywordsList: __;_e;_x;_ex\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-actions.php:71
+#: ../buddyblog-actions.php:74
 msgid "Post deleted successfully"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-actions.php:78
+#: ../buddyblog-actions.php:80
 msgid "You should not perform unauthorized actions"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-actions.php:98
+#: ../buddyblog-actions.php:102
 msgid "Post Published"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-actions.php:122
+#: ../buddyblog-actions.php:128
 msgid "Post unpublished"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:21
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:232
+#: ../buddyblog-loader.php:21 ../admin/admin.php:258
 msgid "BuddyBlog"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:64
+#: ../buddyblog-loader.php:65
 msgid "Search Posts..."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:97
+#: ../buddyblog-loader.php:98
 #, php-format
 msgid "Blog <span>%d</span>"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:116
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:155
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:182
+#: ../buddyblog-loader.php:114 ../buddyblog-loader.php:152
+#: ../buddyblog-loader.php:179
 msgid "Posts"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:125
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:93
+#: ../buddyblog-loader.php:123 ../template/buddyblog/posts.php:91
 msgid "New Post"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/buddyblog-loader.php:189
+#: ../buddyblog-loader.php:186
 #, php-format
 msgid "Profile picture of %s"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:30
+#: ../admin/admin.php:30
 msgid "Settings"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:30
+#: ../admin/admin.php:30
 msgid "Settings for BuddyBlog."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:43
+#: ../admin/admin.php:43
 msgid "Published"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:44
+#: ../admin/admin.php:44
 msgid "Draft"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:48
+#: ../admin/admin.php:48
 msgid "Open"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:49
+#: ../admin/admin.php:49
 msgid "Closed"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:70
+#: ../admin/admin.php:70
 msgid "Blog Post Type"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:71
+#: ../admin/admin.php:71
 msgid "Set the post type for user blog."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:79
+#: ../admin/admin.php:79
 msgid "Default post status"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:80
+#: ../admin/admin.php:80
 msgid "What should be the post status when user submits the form?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:88
+#: ../admin/admin.php:88
+msgid "Allow Upload?"
+msgstr ""
+
+#: ../admin/admin.php:89
+msgid "Want to allow user to upload?"
+msgstr ""
+
+#: ../admin/admin.php:93 ../admin/admin.php:115 ../admin/admin.php:139
+#: ../admin/admin.php:160 ../admin/admin.php:174 ../admin/admin.php:202
+#: ../admin/admin.php:222 ../admin/admin.php:242
+msgid "Yes"
+msgstr ""
+
+#: ../admin/admin.php:94 ../admin/admin.php:116 ../admin/admin.php:140
+#: ../admin/admin.php:161 ../admin/admin.php:175 ../admin/admin.php:203
+#: ../admin/admin.php:223 ../admin/admin.php:243
+msgid "No"
+msgstr ""
+
+#: ../admin/admin.php:101
 msgid "Comment status?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:89
+#: ../admin/admin.php:102
 msgid "Do you want to allow commenting on user posts?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:97
+#: ../admin/admin.php:110
 msgid "Allow post author to enable/disable comment?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:98
+#: ../admin/admin.php:111
 msgid ""
 "If you enable, A user will be able to change the comment status for his/her "
 "post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:102
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:114
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:135
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:148
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:176
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:196
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:216
-msgid "Yes"
+#: ../admin/admin.php:122
+msgid "Where to redirect after creating/updating post?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:103
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:115
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:136
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:149
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:177
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:197
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:217
-msgid "No"
+#: ../admin/admin.php:123
+msgid ""
+"If you select archive, user will be redirected to the post list, if single, "
+"user will be redirected to single post page if the post is published."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:109
+#: ../admin/admin.php:127
+msgid "Archive page"
+msgstr ""
+
+#: ../admin/admin.php:128
+msgid "Single post page"
+msgstr ""
+
+#: ../admin/admin.php:134
 msgid "Enable Taxonomy?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:110
+#: ../admin/admin.php:135
 msgid ""
 "If you enable, users will be able to select terms from the selected "
 "taxonomies."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:121
+#: ../admin/admin.php:146
 msgid "Select allowed taxonomies"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:122
+#: ../admin/admin.php:147
 msgid ""
 "Please check the taxonomies you want users to be able to attach to their "
 "post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:130
+#: ../admin/admin.php:155
 msgid "Show single posts on user profile?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:131
+#: ../admin/admin.php:156
 msgid ""
 "If you enable it, the permalink to single post will be something like http://"
 "yoursite.com/members/username/buddyblog/postname."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:143
+#: ../admin/admin.php:169
 msgid "Limit number of posts a user can create?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:144
+#: ../admin/admin.php:170
 msgid ""
 "If you enable it, You can control the allowed number of posts from the next "
 "option."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:155
+#: ../admin/admin.php:181
 msgid "How many posts a user can create?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:156
+#: ../admin/admin.php:182
 msgid "Only applies if you have enabled the limit on posts from above option."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:163
+#: ../admin/admin.php:189
 msgid "Which capability is required for pusblishing?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:164
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:184
+#: ../admin/admin.php:190 ../admin/admin.php:210
 msgid ""
 "Please check for https://codex.wordpress.org/Roles_and_Capabilities allowed "
 "capabilities."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:171
+#: ../admin/admin.php:197
 msgid "Allow users to unpublish their own post?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:183
+#: ../admin/admin.php:209
 msgid "Which capability is required for creating post?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:191
+#: ../admin/admin.php:217
 msgid "Allow user to edit their post?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:192
+#: ../admin/admin.php:218
 msgid "if you disable it, user will not be able to edit their own post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:203
+#: ../admin/admin.php:229
 msgid "Which capability can edit post in backend(WordPress Dashboard)?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:204
+#: ../admin/admin.php:230
 msgid ""
 "User with these capabilities will nto be redirected to front end editor for "
 "editing post., user will not be able to edit their own post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:211
+#: ../admin/admin.php:237
 msgid "Allow user to delete their post?"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:212
+#: ../admin/admin.php:238
 msgid "if you disable it, user will not be able to delete their own post."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/admin.php:232
+#: ../admin/admin.php:258
 msgid "BuddyBlog Settings"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/admin/options-buddy/fields/image.php:39
+#: ../admin/options-buddy/fields/image.php:39
 msgid "Remove"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/single.php:33
+#: ../template/buddyblog/single.php:33
 #, php-format
-msgid "Postend on %1$s"
+msgid "Posted on %1$s"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/single.php:68
+#: ../template/buddyblog/single.php:68
 msgid "No Posts found!"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/edit.php:9
+#: ../template/buddyblog/edit.php:9
 msgid ""
 "Please Install <a href=\"http://buddydev.com/plugins/bp-simple-front-end-"
 "post/\"> BP Simple Front End Post Plugin to make the editing functionality "
 "work."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:41
+#: ../template/buddyblog/posts.php:39
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:44
+#: ../template/buddyblog/posts.php:42
 msgid "Featured"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:58
+#: ../template/buddyblog/posts.php:56
 msgid "Permanent Link to"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:60
+#: ../template/buddyblog/posts.php:58
 #, php-format
 msgid "%1$s <span>in %2$s</span>"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:64
+#: ../template/buddyblog/posts.php:62
 msgid "Read the rest of this entry &rarr;"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:65
+#: ../template/buddyblog/posts.php:63
 msgid "Pages: "
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:68
+#: ../template/buddyblog/posts.php:66
 msgid "Tags: "
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:68
+#: ../template/buddyblog/posts.php:66
 msgid "No Comments &#187;"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:68
+#: ../template/buddyblog/posts.php:66
 msgid "1 Comment &#187;"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:68
+#: ../template/buddyblog/posts.php:66
 msgid "% Comments &#187;"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:84
+#: ../template/buddyblog/posts.php:82
 msgid "There are no posts by this user at the moment. Please check back later!"
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/template/buddyblog/posts.php:93
+#: ../template/buddyblog/posts.php:91
 msgid "You haven't posted anything yet."
 msgstr ""
 
-#: /var/www/bp/2.2/dev/ms/wp-content/plugins/buddyblog/core/filters.php:59
+#: ../core/filters.php:59
 msgid "Your post was saved."
 msgstr ""
