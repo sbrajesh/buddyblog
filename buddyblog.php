@@ -1,12 +1,13 @@
 <?php
 /**
  * Plugin Name: BuddyBlog
- * Version: 1.1.6
- * Author: Brajesh Singh
- * Author URI: http://buddydev.com/members/sbrajesh/
- * Plugin URI: http://buddydev.com/plugins/buddyblog/
+ * Version: 1.1.7
+ * Author: BuddyDev
+ * Author URI: https://buddydev.com/members/sbrajesh/
+ * Plugin URI: https://buddydev.com/plugins/buddyblog/
  * Description: Allow users to post/edit/manage blog posts from their BuddyPress profile 
  */
+
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 define( 'BP_BUDDYBLOG_PLUGIN_DIR',  plugin_dir_path( __FILE__ ) );
@@ -35,8 +36,8 @@ add_action( 'bp_include', 'buddyblog_load_component' );
 /**
  * BuddyBlog Installation Routine
  * Does Nothing at the moment
- * @global type $wpdb
- * @global type $bp 
+ * @global wpdb $wpdb
+ * @global BuddyPress $bp
  */
 function buddyblog_install() {
     
@@ -73,24 +74,14 @@ function buddyblog_install() {
 }
 register_activation_hook( __FILE__, 'buddyblog_install' );
 
-add_action( 'bp_init', 'buddyblog_load_textdomain', 2 );
-    //localization
+
+/**
+ * Load translation files
+ */
 function buddyblog_load_textdomain() {
-
-
-	$locale = get_locale();
-
-	// if load .mo file
-	if ( ! empty( $locale ) ) {
-		$mofile_default = sprintf( '%slanguages/%s.mo', plugin_dir_path( __FILE__ ), $locale );
-
-		$mofile = apply_filters( 'buddyblog_load_mofile', $mofile_default );
-		// make sure file exists, and load it
-		if ( file_exists( $mofile ) ) {
-			load_textdomain( 'buddyblog', $mofile );
-		}
-	}
+	load_plugin_textdomain( 'buddyblog', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
+add_action( 'bp_init', 'buddyblog_load_textdomain', 2 );
 
 /**
  * Load comment reply script on single post
@@ -100,7 +91,6 @@ function buddyblog_load_textdomain() {
 function buddyblog_load_comment_js() {
 	
     if ( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) ) {
-     
 		wp_enqueue_script( 'comment-reply' );
 	}	
 }
