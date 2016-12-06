@@ -233,14 +233,16 @@ function buddyblog_get_post_publish_unpublish_url( $post_id = false ) {
    
 }
 /**
- * retusn a link that allows to publish/unpublish the post
- * @param type $post_id
- * @param type $label_ac
- * @param type $label_de
- * @return type 
+ * return a link that allows to publish/unpublish the post
+ *
+ * @param int $post_id
+ * @param string $label_ac
+ * @param string $label_de
+ * @return string link
  */  
-function buddyblog_get_post_publish_unpublish_link( $post_id = false, $label_ac = 'Publish', $label_de = 'Unpublish' ) {
-	
+function buddyblog_get_post_publish_unpublish_link( $post_id = 0, $label_ac = '', $label_de = '' ) {
+
+
 	if ( ! $post_id ) {
 		return;
 	}
@@ -259,7 +261,15 @@ function buddyblog_get_post_publish_unpublish_link( $post_id = false, $label_ac 
         
        //check if post is published
     $url = buddyblog_get_post_publish_unpublish_url( $post_id );
-	
+
+	if ( empty( $label_ac ) ) {
+		$label_ac = __( 'Publish', 'buddyblog' );
+	}
+
+	if ( empty( $label_de ) ) {
+		$label_de = __( 'Unpublish', 'buddyblog' );
+	}
+
     if ( buddyblog_is_post_published( $post_id ) ) {
 		$link = "<a href='{$url}'>{$label_de}</a>";
 	} else {

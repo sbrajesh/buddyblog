@@ -100,13 +100,17 @@ function buddyblog_get_edit_url( $post_id = false ) {
  * @param type $label
  * @return type 
  */
-function buddyblog_get_edit_link( $id = 0, $label = 'Edit' ) {
+function buddyblog_get_edit_link( $id = 0, $label = '' ) {
     
 	
 	if ( ! buddyblog_get_option( 'allow_edit' ) ) {
 		return '';
 	}
-	
+
+	if ( empty( $label ) ) {
+		$label = __( 'Edit', 'buddyblog' );
+	}
+
     $url = buddyblog_get_edit_url( $id );
     
     if ( ! $url ) {
@@ -122,12 +126,16 @@ function buddyblog_get_edit_link( $id = 0, $label = 'Edit' ) {
  * @param type $label
  * @return type 
  */
-function buddyblog_get_delete_link( $id = 0, $label = 'Delete' ) {
+function buddyblog_get_delete_link( $id = 0, $label = '' ) {
 	
     if ( ! buddyblog_user_can_delete( $id,  get_current_user_id() ) ) {
         return;
 	}
-	
+
+	if ( empty( $label ) ) {
+		$label = __( 'Delete', 'buddyblog' );
+	}
+
     $bp = buddypress();
 	
     $post = get_post( $id );
@@ -143,7 +151,7 @@ function buddyblog_get_delete_link( $id = 0, $label = 'Delete' ) {
  * Link to create new Post
  * 
  * 
- * @return type 
+ * @return string
  */
 
 function buddyblog_get_new_url() {
