@@ -157,6 +157,23 @@ class BuddyBlog_Core_Component extends BP_Component {
 				'title'  => $title,
 				'href'   => trailingslashit( $blog_link )
 			);
+
+			$wp_admin_nav[] = array(
+				'parent'   => 'my-account-' . $this->id,
+				'id'       => 'my-account-' . $this->id . '-my-posts',
+				'title'    => __( 'My Posts', 'buddyblog' ),
+				'href'     => trailingslashit( $blog_link ),
+				'position' => 10
+			);
+
+			// Add new Posts.
+			$wp_admin_nav[] = array(
+				'parent'   => 'my-account-' . $this->id,
+				'id'       => 'my-account-' . $this->id . '-new-post',
+				'title'    => __( 'New Post', 'buddyblog' ),
+				'href'     => trailingslashit( $blog_link . 'edit' ),
+				'position' => 20
+			);
 			
 		}
 
