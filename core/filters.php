@@ -189,7 +189,7 @@ function buddyblog_add_user_can_edit_cap( $allcaps, $cap, $args ) {
 	
     $post_type_obj = get_post_type_object( buddyblog_get_posttype() );
     
-    if ( $post_type_obj->cap->edit_post != $args[0] ) {
+    if ( is_null( $post_type_obj ) || $post_type_obj->cap->edit_post != $args[0] ) {
 		return $allcaps;
 	}
     
