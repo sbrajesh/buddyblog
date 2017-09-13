@@ -112,7 +112,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 			$blog_link = trailingslashit( bp_loggedin_user_domain() . $this->slug );
 		}
 		// Add the Group Invites nav item.
-		$sub_nav['posts'] = array(
+		$sub_nav['my-posts'] = array(
 			'name'            => __( 'Posts', 'buddyblog' ),
 			'slug'            => BUDDYBLOG_ARCHIVE_SLUG,
 			'parent_url'      => $blog_link,
