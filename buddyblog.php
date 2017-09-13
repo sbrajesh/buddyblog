@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: BuddyBlog
- * Version: 1.1.9
+ * Version: 1.2.0
  * Author: BuddyDev
  * Author URI: https://buddydev.com/members/sbrajesh/
  * Plugin URI: https://buddydev.com/plugins/buddyblog/
