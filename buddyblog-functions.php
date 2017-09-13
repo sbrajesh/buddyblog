@@ -188,15 +188,14 @@ function buddyblog_user_has_posted() {
 }
 /**
  * Get the url of the BuddyBlog component for the given user
- * 
- * @global type $bp
- * @param type $user_id
+ *
+ * @param int|bool $user_id id of user.
  * @return string 
  */
 function buddyblog_get_home_url( $user_id = false ) {
 	
     if ( ! $user_id ) {
-        $user_id = get_current_user_id ();
+        $user_id = bp_displayed_user_id();
 	}
     
     $url = bp_core_get_user_domain( $user_id ) . buddypress()->buddyblog->slug . '/';

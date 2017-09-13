@@ -214,6 +214,7 @@ function buddyblog_paginate() {
 		
         $format = empty( $perma_struct ) ? '&page=%#%' : 'page/%#%/';
         $base = trailingslashit( buddyblog_get_home_url() . BUDDYBLOG_ARCHIVE_SLUG );
+
         // echo $base;
         if ( bp_is_buddyblog_component() ) {
              //$base = $base.'/';
