@@ -233,6 +233,16 @@ class BuddyBlog_Admin {
 					0 => __( 'No', 'buddyblog' ),
 				),
 			),
+			array(
+				'name'    => 'post_on_delete',
+				'label'   => __( 'Post on delete?', 'buddyblog' ),
+				'type'    => 'radio',
+				'default' => 1,
+				'options' => array(
+					1 => __( 'Move to trash', 'buddyblog' ),
+					2 => __( 'Permanently delete', 'buddyblog' ),
+				),
+			),
 		) );
 
 		do_action( 'buddyblog_admin_register_settings', $page );
