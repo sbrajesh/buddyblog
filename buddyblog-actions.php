@@ -57,20 +57,27 @@ class BuddyBlog_Actions {
      * delete Post screen
      */
     public function delete() {
-        
-		if ( ! ( bp_is_buddyblog_component() && bp_is_current_action( 'delete' ) ) ) {
-		 return;
-		}
-          
+
+    	if ( ! bp_is_buddyblog_component() || ! bp_is_current_action( 'delete' ) ) {
+    		return;
+	    }
+
         $post_id = bp_action_variable( 0 );
 		
         if ( ! $post_id ) {
             return;
 		}
-         
+
         if ( buddyblog_user_can_delete( $post_id,  get_current_user_id() ) ) {
 
-            wp_delete_post( $post_id, true );
+			$post_on_delete = buddyblog_get_option( 'post_on_delete' );
+
+			$post_on_delete = ( $post_on_delete ) ? true : false;
+
+            $post = wp_delete_post( $post_id, $post_on_delete );
+
+            do_action( 'buddyblog_post_deleted', $post_on_delete, $post );
+
             bp_core_add_message ( __( 'Post deleted successfully' ), 'buddyblog' );
             //redirect
             wp_redirect( buddyblog_get_home_url() );//hardcoding bad
@@ -97,9 +104,9 @@ class BuddyBlog_Actions {
 		}
        
         if ( buddyblog_user_can_publish( get_current_user_id(), $id ) ) {
-			
-            wp_publish_post( $id );//change status to publish         
-            bp_core_add_message( __( 'Post Published', 'buddyblog' ) );   
+            wp_publish_post( $id ); // Change status to publish
+	        do_action( 'buddyblog_post_published', $id );
+	        bp_core_add_message( __( 'Post Published', 'buddyblog' ) );
         }
 		
         bp_core_redirect( buddyblog_get_home_url() );
@@ -123,8 +130,11 @@ class BuddyBlog_Actions {
                
 			$post = get_post( $id, ARRAY_A );
 			$post['post_status'] = 'draft';
+
 			wp_update_post( $post );
-			//unpublish
+
+			do_action( 'buddyblog_post_unpublished', $post );
+			// Unpublish
 			bp_core_add_message( __('Post unpublished','buddyblog') );
                 
         }

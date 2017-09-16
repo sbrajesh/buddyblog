@@ -56,11 +56,11 @@ function buddyblog_install() {
 		'limit_no_of_posts'		=> false,
 		'max_allowed_posts'		=> 20,
 		'publish_cap'			=> 'read',
-		'allow_unpublishing'	=> 1,//subscriber //see https://codex.wordpress.org/Roles_and_Capabilities
+		'allow_unpublishing'	=> 1,// Subscriber //see https://codex.wordpress.org/Roles_and_Capabilities.
 		'post_cap'				=> 'read',
 		'allow_edit'			=> 1,
 		'allow_delete'			=> 1,
-		
+		'post_on_delete'        => 0,
 		//'enabled_tags'			=> 1,
         //'taxonomies'		=> array( 'category' ),
         'allow_upload'		=> false,

@@ -198,7 +198,7 @@ function buddyblog_add_user_can_edit_cap( $allcaps, $cap, $args ) {
     if ( buddyblog_user_can_edit( $post_id ) ) {
         $allcaps[ $cap[0] ] = true;
 	}
-    
+
     return $allcaps;
 	// give author some permissions
 }

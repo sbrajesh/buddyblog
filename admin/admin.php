@@ -239,8 +239,8 @@ class BuddyBlog_Admin {
 				'type'    => 'radio',
 				'default' => 1,
 				'options' => array(
-					1 => __( 'Move to trash', 'buddyblog' ),
-					2 => __( 'Permanently delete', 'buddyblog' ),
+					0 => __( 'Move to trash', 'buddyblog' ),
+					1 => __( 'Permanently delete', 'buddyblog' ),
 				),
 			),
 		) );

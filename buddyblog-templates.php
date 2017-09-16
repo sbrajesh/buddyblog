@@ -54,24 +54,23 @@ function buddyblog_get_post_url( $post_id ) {
 /**
  * Get the url of the Post for editing
  * @param type $post_id
- * @return type 
+ * @return type
  */
 function buddyblog_get_edit_url( $post_id = false ) {
 	
     $bp = buddypress();
 	
     $user_id = get_current_user_id();
-	
-    if ( ! $user_id ) {
-        return;
+
+	if ( ! $user_id ) {
+		return;
 	}
-	
-    if ( empty( $post_id ) ) {
-     
+
+	if ( empty( $post_id ) ) {
 		$post_id = get_the_ID();
-		
-	}	
-     //cheeck if current user can edit the post
+	}
+
+    // Check if current user can edit the post.
     $post = get_post( $post_id );
     //if the author of the post is same as the loggedin user or the logged in user is admin
    
@@ -101,8 +100,7 @@ function buddyblog_get_edit_url( $post_id = false ) {
  * @return type 
  */
 function buddyblog_get_edit_link( $id = 0, $label = '' ) {
-    
-	
+
 	if ( ! buddyblog_get_option( 'allow_edit' ) ) {
 		return '';
 	}
@@ -112,7 +110,7 @@ function buddyblog_get_edit_link( $id = 0, $label = '' ) {
 	}
 
     $url = buddyblog_get_edit_url( $id );
-    
+
     if ( ! $url ) {
         return '';
 	}
