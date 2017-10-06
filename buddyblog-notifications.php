@@ -1,4 +1,12 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Notifications?
+ *
+ * @package buddyblog
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 0 );
+}
 
 

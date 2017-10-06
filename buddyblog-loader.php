@@ -1,16 +1,18 @@
 <?php
-
 /**
  * BuddyBlog Component Loader
  *
- * should we attach it to the blog screen
+ * @package buddyblog
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * BuddyBlog Component
+ */
 class BuddyBlog_Core_Component extends BP_Component {
 
 	/**
@@ -24,12 +26,15 @@ class BuddyBlog_Core_Component extends BP_Component {
 			untrailingslashit( plugin_dir_path( __FILE__ ) )
 		);
 
-		$this->includes();//load files
+		$this->includes();
+		// set it as active.
 		buddypress()->active_components[ $this->id ] = 1;
 	}
 
 	/**
 	 * Include files
+	 *
+	 * @param array $includes included files.
 	 */
 	public function includes( $includes = array() ) {
 		$includes = array(
@@ -41,8 +46,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 			'buddyblog-notifications.php',
 			'buddyblog-hooks.php',
 			'core/filters.php',
-			'core/permissions.php'
-
+			'core/permissions.php',
 		);
 
 		parent::includes( $includes );
@@ -51,10 +55,9 @@ class BuddyBlog_Core_Component extends BP_Component {
 	/**
 	 * Setup globals
 	 */
-
 	public function setup_globals( $globals = array() ) {
 
-		// Define a slug, if necessary
+		// Define a slug, if necessary.
 		if ( ! defined( 'BP_BUDDYBLOG_SLUG' ) ) {
 			define( 'BP_BUDDYBLOG_SLUG', $this->id );
 		}
@@ -65,23 +68,25 @@ class BuddyBlog_Core_Component extends BP_Component {
 			'has_directory'         => false,
 			'notification_callback' => 'buddyblog_format_notifications',
 			'search_string'         => __( 'Search Posts...', 'buddyblog' ),
-			'global_tables'         => array()
+			'global_tables'         => array(),
 		);
 
 		parent::setup_globals( $globals );
-
 	}
 
 	/**
 	 * Setup BuddyBar navigation
 	 * Sets up user tabs
 	 *
+	 * @param array $main_nav main nav items.
+	 * @param array $sub_nav sub nav items.
 	 */
 	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
-		// Define local variables
+		// Define local variables.
 		$sub_nav = array();
-		$screen  = BuddyBlog_Screens::get_instance();//instance of the blog screen
+		// instance of the blog screen.
+		$screen  = BuddyBlog_Screens::get_instance();
 
 		$total_posts = 0;
 
@@ -91,7 +96,6 @@ class BuddyBlog_Core_Component extends BP_Component {
 		} else {
 			$total_posts = buddyblog_get_total_published_posts( bp_displayed_user_id() );
 		}
-
 
 		$total_posts = apply_filters( 'buddyblog_visible_posts_count', $total_posts, bp_displayed_user_id() );
 
@@ -132,7 +136,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 		);
 
 		$main_nav = apply_filters( 'buddyblog_setup_main_nav', $main_nav );
-		$sub_nav = apply_filters( 'buddyblog_setup_sub_nav', $sub_nav );
+		$sub_nav  = apply_filters( 'buddyblog_setup_sub_nav', $sub_nav );
 
 		parent::setup_nav( $main_nav, $sub_nav );
 	}
@@ -229,4 +233,3 @@ function bp_setup_buddyblog() {
 }
 
 add_action( 'bp_loaded', 'bp_setup_buddyblog' );
-
