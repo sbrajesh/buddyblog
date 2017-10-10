@@ -191,3 +191,13 @@ class BuddyBlog {
 
 // Instantiate.
 BuddyBlog::get_instance();
+
+
+/**
+ * Helper function to access the BuddyBlog singleton instance.
+ *
+ * @return BuddyBlog
+ */
+function buddyblog() {
+	return BuddyBlog::get_instance();
+}
