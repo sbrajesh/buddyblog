@@ -21,22 +21,122 @@ if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
 	define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
 }
 
+
 /**
- * Include the component loader
+ * BuddyBlog main class
  */
-function buddyblog_load_component() {
+class BuddyBlog {
 
-	$path = plugin_dir_path( __FILE__ );
+	/**
+	 * Singleton instance
+	 *
+	 * @var BuddyBlog
+	 */
+	private static $instance = null;
 
-	include_once $path . 'buddyblog-loader.php';
+	/**
+	 * Absolute path to this plugin directory.
+	 *
+	 * @var string
+	 */
+	private $path;
 
-	if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
-		require_once $path . 'admin/admin.php';
+	/**
+	 * Absolute url to this plugin directory.
+	 *
+	 * @var string
+	 */
+	private $url;
+
+	/**
+	 * Plugin basename.
+	 *
+	 * @var string
+	 */
+	private $basename;
+
+	/**
+	 * Constructor
+	 */
+	private function __construct() {
+
+		$this->path = plugin_dir_path( __FILE__ );
+		$this->url  = plugin_dir_url( __FILE__ );
+		$this->basename = plugin_basename( __FILE__ );
+
+		$this->setup();
 	}
 
+	/**
+	 * Get singleton instance
+	 *
+	 * @return BuddyBlog
+	 */
+	public static function get_instance() {
+
+		if ( is_null( self::$instance ) ) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	/**
+	 * Setup hooks.
+	 */
+	public function setup() {
+		// add_action( 'bp_loaded', array( $this, 'load' ) );
+		add_action( 'bp_include', array( $this, 'load' ) );
+	}
+
+	/**
+	 * Load required files
+	 */
+	public function load() {
+		$files = array(
+			'buddyblog-loader.php',
+		);
+
+		if ( is_admin() && ! defined( 'DOING_AJAX' ) ) {
+			$files[] = 'admin/admin.php';
+		}
+
+		foreach ( $files as $file ) {
+			require_once $this->path . $file;
+		}
+	}
+
+	/**
+	 * Get the main plugin file.
+	 *
+	 * @return string
+	 */
+	public function get_file() {
+		return __FILE__;
+	}
+
+	/**
+	 * Get sbsolute url to this plugin dir.
+	 *
+	 * @return string
+	 */
+	public function get_url() {
+		return $this->url;
+	}
+
+	/**
+	 * Get absolute path to this plugin dir.
+	 *
+	 * @return string
+	 */
+	public function get_path() {
+		return $this->path;
+	}
 }
 
-add_action( 'bp_include', 'buddyblog_load_component' );
+// Instantiate.
+BuddyBlog::get_instance();
+
 
 /**
  * BuddyBlog Installation Routine
