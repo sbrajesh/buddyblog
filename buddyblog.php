@@ -88,6 +88,8 @@ class BuddyBlog {
 	public function setup() {
 		// add_action( 'bp_loaded', array( $this, 'load' ) );
 		add_action( 'bp_include', array( $this, 'load' ) );
+		add_action( 'bp_init', array( $this, 'load_textdomain' ), 2 );
+		// add_action( 'bp_enqueue_scripts', array( $this, 'load_comment_js' ) );
 	}
 
 	/**
@@ -106,6 +108,23 @@ class BuddyBlog {
 			require_once $this->path . $file;
 		}
 	}
+
+	/**
+	 * Load translation files
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'buddyblog', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+
+	/**
+	 * Load comment js on singular posts.
+	 */
+	public function load_comment_js() {
+		if ( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) ) {
+			wp_enqueue_script( 'comment-reply' );
+		}
+	}
+
 
 	/**
 	 * Update settings on activation.
@@ -153,7 +172,7 @@ class BuddyBlog {
 	}
 
 	/**
-	 * Get sbsolute url to this plugin dir.
+	 * Get absolute url to this plugin dir.
 	 *
 	 * @return string
 	 */
@@ -173,24 +192,3 @@ class BuddyBlog {
 
 // Instantiate.
 BuddyBlog::get_instance();
-
-
-
-/**
- * Load translation files
- */
-function buddyblog_load_textdomain() {
-	load_plugin_textdomain( 'buddyblog', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-
-add_action( 'bp_init', 'buddyblog_load_textdomain', 2 );
-
-/**
- * Load comment reply script on single post
- */
-// add_action('bp_enqueue_scripts','buddyblog_load_comment_js');
-function buddyblog_load_comment_js() {
-	if ( bp_is_current_component( 'buddyblog' ) && bp_is_current_action( 'my-posts' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
