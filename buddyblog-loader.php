@@ -41,12 +41,11 @@ class BuddyBlog_Core_Component extends BP_Component {
 			'core/buddyblog-templates.php',
 			'core/buddyblog-actions.php',
 			'core/buddyblog-screens.php',
-
 			'core/buddyblog-functions.php',
 			'core/buddyblog-notifications.php',
 			'core/buddyblog-hooks.php',
-			'core/filters.php',
-			'core/permissions.php',
+			'core/buddyblog-filters.php',
+			'core/buddyblog-permissions.php',
 		);
 
 		parent::includes( $includes );
