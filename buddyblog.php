@@ -15,8 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define( 'BP_BUDDYBLOG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-
 if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
 	define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
 }
