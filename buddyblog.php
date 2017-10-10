@@ -125,7 +125,6 @@ class BuddyBlog {
 		}
 	}
 
-
 	/**
 	 * Update settings on activation.
 	 */

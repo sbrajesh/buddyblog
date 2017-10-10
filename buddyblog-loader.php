@@ -38,13 +38,13 @@ class BuddyBlog_Core_Component extends BP_Component {
 	 */
 	public function includes( $includes = array() ) {
 		$includes = array(
-			'buddyblog-templates.php',
-			'buddyblog-actions.php',
-			'buddyblog-screens.php',
+			'core/buddyblog-templates.php',
+			'core/buddyblog-actions.php',
+			'core/buddyblog-screens.php',
 
-			'buddyblog-functions.php',
-			'buddyblog-notifications.php',
-			'buddyblog-hooks.php',
+			'core/buddyblog-functions.php',
+			'core/buddyblog-notifications.php',
+			'core/buddyblog-hooks.php',
 			'core/filters.php',
 			'core/permissions.php',
 		);
