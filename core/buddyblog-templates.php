@@ -25,7 +25,7 @@ function buddyblog_load_template( $template ) {
 	} elseif ( file_exists( TEMPLATEPATH . '/buddyblog/' . $template ) ) {
 		include_once TEMPLATEPATH . '/buddyblog/' . $template;
 	} else {
-		include_once BP_BUDDYBLOG_PLUGIN_DIR . 'template/buddyblog/' . $template;
+		include_once buddyblog()->get_path() . 'template/buddyblog/' . $template;
 	}
 }
 
