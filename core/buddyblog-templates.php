@@ -20,12 +20,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function buddyblog_load_template( $template ) {
 
-	if ( file_exists( STYLESHEETPATH . '/buddyblog/' . $template ) ) {
-		include_once STYLESHEETPATH . '/buddyblog/' . $template;
-	} elseif ( file_exists( TEMPLATEPATH . '/buddyblog/' . $template ) ) {
-		include_once TEMPLATEPATH . '/buddyblog/' . $template;
-	} else {
-		include_once buddyblog()->get_path() . 'template/buddyblog/' . $template;
+	$template_dir = apply_filters( 'buddyblog_template_dir', 'buddyblog' );
+
+	// check for buddyblog/template-file.php in the child theme's dir and then in parent's.
+	$located = locate_template( array( $template_dir . '/' . $template ), false );
+
+	if ( ! $located ) {
+		$located = buddyblog()->get_path() . 'template/buddyblog/' . $template;
+	}
+
+	if ( is_readable( $located ) ) {
+		require $located;
 	}
 }
 
