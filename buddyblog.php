@@ -15,11 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
-	define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
-}
-
-
 /**
  * BuddyBlog main class
  */
@@ -61,9 +56,11 @@ class BuddyBlog {
 		$this->path = plugin_dir_path( __FILE__ );
 		$this->url  = plugin_dir_url( __FILE__ );
 		$this->basename = plugin_basename( __FILE__ );
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
 
+		$this->setup_constants();
 		$this->setup();
+
+		register_activation_hook( __FILE__, array( $this, 'install' ) );
 	}
 
 	/**
@@ -90,6 +87,14 @@ class BuddyBlog {
 		// add_action( 'bp_enqueue_scripts', array( $this, 'load_comment_js' ) );
 	}
 
+	/**
+	 * Setup constants.
+	 */
+	private function setup_constants() {
+		if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
+			define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
+		}
+	}
 	/**
 	 * Load required files
 	 */
