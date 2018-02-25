@@ -252,45 +252,34 @@ function buddyblog_show_posts_on_profile( $post ) {
 }
 
 /**
- * Modify the component title
+ * Modify page title
  *
- * @param string $full_title title.
- * @param string $title title
- * @param string $sep title separator.
- * @param string $seplocation separator location(right/left).
+ * @param array $bp_title Array of title info.
  *
- * @return string
+ * @return mixed
  */
-function buddyblog_modify_page_title( $full_title, $title, $sep, $seplocation ) {
+function buddyblog_modify_page_title( $bp_title ) {
 
 	if ( ! bp_is_buddyblog_component() ) {
-		return $full_title;
+		return $bp_title;
 	}
 
 	$post_type_obj = get_post_type_object( buddyblog_get_posttype() );
-
-	$full_title = bp_get_displayed_user_fullname() . ' ' . $sep . ' ' . $post_type_obj->labels->name . ' ' . $sep . ' ';
+	$sep           = apply_filters( 'document_title_separator', '-' );
 
 	if ( buddyblog_is_single_post() ) {
-
-		$post_id = buddyblog_get_post_id( bp_action_variable( 0 ) );
-		$post    = get_post( $post_id );
-
-		$full_title .= $post->post_title . ' ' . $sep . ' ';
-
+		$post_id           = buddyblog_get_post_id( bp_action_variable( 0 ) );
+		$post              = get_post( $post_id );
+		$bp_title['title'] = $post->post_title . ' ' . $sep . ' ' . $bp_title['title'];
+		$bp_title['page']  = '';
 	} elseif ( buddyblog_is_edit_post() ) {
-
-		$full_title .= $post_type_obj->labels->edit_item . ' ' . $sep . ' ';
-
+		$bp_title['title'] = $post_type_obj->labels->edit_item;
 	} elseif ( buddyblog_is_new_post() ) {
-
-		$full_title .= $post_type_obj->labels->new_item . ' ' . $sep . ' ';
+		$bp_title['title'] = $post_type_obj->labels->new_item;
 	}
 
-	return $full_title;
-
-	//  bp_get_displayed_user_fullname(), ucwords( $component_name ), $sep 
-	//if we are here, we are on
+	return $bp_title;
 }
 
-add_filter( 'bp_modify_page_title', 'buddyblog_modify_page_title', 20, 4 );
+add_filter( 'bp_modify_document_title_parts', 'buddyblog_modify_page_title' );
+

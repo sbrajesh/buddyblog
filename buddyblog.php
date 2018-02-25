@@ -53,14 +53,12 @@ class BuddyBlog {
 	 */
 	private function __construct() {
 
-		$this->path = plugin_dir_path( __FILE__ );
-		$this->url  = plugin_dir_url( __FILE__ );
+		$this->path     = plugin_dir_path( __FILE__ );
+		$this->url      = plugin_dir_url( __FILE__ );
 		$this->basename = plugin_basename( __FILE__ );
 
 		$this->setup_constants();
 		$this->setup();
-
-		register_activation_hook( __FILE__, array( $this, 'install' ) );
 	}
 
 	/**
@@ -81,7 +79,8 @@ class BuddyBlog {
 	 * Setup hooks.
 	 */
 	public function setup() {
-		// add_action( 'bp_loaded', array( $this, 'load' ) );
+		register_activation_hook( __FILE__, array( $this, 'install' ) );
+
 		add_action( 'bp_include', array( $this, 'load' ) );
 		add_action( 'bp_init', array( $this, 'load_textdomain' ), 2 );
 		// add_action( 'bp_enqueue_scripts', array( $this, 'load_comment_js' ) );
@@ -147,13 +146,13 @@ class BuddyBlog {
 			'limit_no_of_posts'     => 0,
 			'max_allowed_posts'     => 20,
 			'publish_cap'           => 'read',
-			'allow_unpublishing'    => 1,// subscriber //see https://codex.wordpress.org/Roles_and_Capabilities.
+			'allow_unpublishing'    => 1, // subscriber //see https://codex.wordpress.org/Roles_and_Capabilities.
 			'post_cap'              => 'read',
 			'allow_edit'            => 1,
 			'allow_delete'          => 1,
 
-			//'enabled_tags'			=> 1,
-			//'taxonomies'		=> array( 'category' ),
+			// 'enabled_tags'		=> 1,
+			// 'taxonomies'		    => array( 'category' ),
 			'allow_upload'          => 0,
 			'max_upload_count'      => 2,
 		);
@@ -192,10 +191,6 @@ class BuddyBlog {
 	}
 }
 
-// Instantiate.
-BuddyBlog::get_instance();
-
-
 /**
  * Helper function to access the BuddyBlog singleton instance.
  *
@@ -204,3 +199,6 @@ BuddyBlog::get_instance();
 function buddyblog() {
 	return BuddyBlog::get_instance();
 }
+
+// Instantiate.
+buddyblog();
