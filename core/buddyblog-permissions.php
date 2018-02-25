@@ -5,6 +5,11 @@
  * @package buddyblog
  */
 
+// Exit if file access directly over web.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 0 );
+}
+
 /**
  * Can user publish the post
  *

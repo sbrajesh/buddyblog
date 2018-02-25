@@ -1,11 +1,21 @@
 <?php
-//we use options buddy
+/**
+ * Admin settings helper class.
+ *
+ * @package buddyblog
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 require_once dirname( __FILE__ ) . '/options-buddy/ob-loader.php';
 
 /**
- * Class BuddyBlog_Admin
+ * Class BuddyBlog_Admin_Settings_Helper
  */
-class BuddyBlog_Admin {
+class BuddyBlog_Admin_Settings_Helper {
 	/**
 	 * Holds optionsbuddy settings page object
 	 *
@@ -72,7 +82,7 @@ class BuddyBlog_Admin {
 			$tax[ $taxonomy ] = $tax_object->labels->name;
 		}
 
-		// Add fields
+		// Add fields.
 		$page->get_section( 'basic_section' )->add_fields( array( // Remember, we registered basic section earlier.
 			array(
 				'name'    => 'post_type',
@@ -250,11 +260,9 @@ class BuddyBlog_Admin {
 		) );
 	}
 
-
 	/**
 	 * Returns all the settings fields
 	 *
-	 * @return array settings fields
 	 */
 	public function admin_css() {
 
@@ -263,16 +271,10 @@ class BuddyBlog_Admin {
 		}
 
 		?>
-
-        <style type="text/css">
-            .wrap .form-table {
-                margin: 10px;
-            }
-        </style>
-
+        <style type="text/css">.wrap .form-table {margin: 10px;}</style>
 		<?php
-
 	}
 }
 
-new BuddyBlog_Admin();
+new BuddyBlog_Admin_Settings_Helper();
+

@@ -8,7 +8,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-// fix to disable/re-enable buddypress comment open/close filter.
+
+/**
+ * Fix to disable/re-enable buddypress comment open/close filter.
+ */
 function buddyblog_disable_bp_comment_filter() {
 
 	if ( has_filter( 'comments_open', 'bp_comments_open' ) ) {

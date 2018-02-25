@@ -5,9 +5,11 @@
  * @package buddyblog
  */
 
+// Exit if file access directly over web.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 /**
  * General functions for templating purpose.
  */
@@ -87,6 +89,7 @@ function buddyblog_get_edit_url( $post_id = 0 ) {
 	}
 	// check if current user can edit the post.
 	$post = get_post( $post_id );
+
 	// if the author of the post is same as the loggedin user or the logged in user is admin.
 	if ( $post->post_type != buddyblog_get_posttype() ) {
 		return '';
@@ -97,6 +100,7 @@ function buddyblog_get_edit_url( $post_id = 0 ) {
 	}
 
 	$action_name = 'edit';
+
 	if ( current_user_can( buddyblog_get_option( 'dashboard_edit_cap' ) ) ) {
 		return get_edit_post_link( $post );
 	}
@@ -180,7 +184,6 @@ function buddyblog_get_new_url() {
 	// if we are here, we can allow user to edit the post.
 	return bp_core_get_user_domain( $user_id ) . $bp->buddyblog->slug . '/edit/';
 }
-
 
 /**
  * Just a wrapper , you may use get_permalink instead if you have the post id

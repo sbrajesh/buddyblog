@@ -14,8 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Handles various BuddyBlog Actions
  */
 class BuddyBlog_Actions {
+
 	/**
-	 * Singleton instance.
+	 * Class instance.
 	 *
 	 * @var BuddyBlog_Actions
 	 */
@@ -80,7 +81,7 @@ class BuddyBlog_Actions {
 			wp_delete_post( $post_id, true );
 			bp_core_add_message( __( 'Post deleted successfully' ), 'buddyblog' );
 			// redirect.
-			wp_redirect( buddyblog_get_home_url() );// hardcoding bad.
+			wp_redirect( buddyblog_get_home_url() ); // hardcoding bad.
 			exit( 0 );
 
 		} else {
@@ -155,10 +156,9 @@ class BuddyBlog_Actions {
 		$post_redirect = buddyblog_get_option( 'post_update_redirect' );
 
 		$url = '';
-		if ( $post_redirect == 'archive' ) {
 
+		if ( 'archive' == $post_redirect ) {
 			$url = buddyblog_get_home_url();
-
 		} elseif ( $post_redirect == 'single' && get_post_status( $post_id ) == 'publish' ) {
 			// go to single post.
 			$url = get_permalink( $post_id );
@@ -188,14 +188,13 @@ class BuddyBlog_Actions {
 			$post_status = 'draft';
 		}
 
-
 		$settings = array(
 			'post_type'             => buddyblog_get_posttype(),
 			'post_status'           => $post_status,
 			'comment_status'        => buddyblog_get_option( 'comment_status' ),
 			'show_comment_option'   => buddyblog_get_option( 'show_comment_option' ),
-			'custom_field_title'    => '',// we are only using it for hidden field, so no need to show it.
-			'custom_fields' => array(
+			'custom_field_title'    => '', // we are only using it for hidden field, so no need to show it.
+			'custom_fields'         => array(
 				'_is_buddyblog_post' => array(
 					'type'    => 'hidden',
 					'label'   => '',
@@ -222,7 +221,7 @@ class BuddyBlog_Actions {
 
 					$taxonomies[ $tax_name ] = array(
 						'taxonomy'  => $tax_name,
-						'view_type' => 'checkbox',// currently only checkbox.
+						'view_type' => 'checkbox', // currently only checkbox.
 					);
 
 				}
@@ -235,10 +234,11 @@ class BuddyBlog_Actions {
 		// use it to add extra fields or filter the post type etc.
 		$settings = apply_filters( 'buddyblog_post_form_settings', $settings );
 
-		bp_new_simple_blog_post_form( 'buddyblog-user-posts', $settings );// the blog form.
+		bp_new_simple_blog_post_form( 'buddyblog-user-posts', $settings ); // the blog form.
 
 	}
 }
 
 // instantiate.
 BuddyBlog_Actions::get_instance();
+
