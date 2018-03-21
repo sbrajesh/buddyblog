@@ -270,24 +270,21 @@ function buddyblog_get_post_publish_unpublish_url( $post_id = 0 ) {
  */
 function buddyblog_get_post_publish_unpublish_link( $post_id = 0, $label_ac = '', $label_de = '' ) {
 
-
 	if ( ! $post_id ) {
 		return '';
 	}
 
-	if ( ! buddyblog_user_can_publish( get_current_user_id(), $post_id ) ) {
+	$is_published = buddyblog_is_post_published( $post_id );
+
+	if ( $is_published && ! buddyblog_user_can_unpublish( get_current_user_id(), $post_id ) ) {
+		return '';
+	} elseif ( ! $is_published && ! buddyblog_user_can_publish( get_current_user_id(), $post_id ) ) {
 		return '';
 	}
 
 	$post = get_post( $post_id );
 
 	$url = '';
-
-	if ( ! ( is_super_admin() || $post->post_author == get_current_user_id() ) ) {
-		return;
-	}
-
-	// check if post is published.
 	$url = buddyblog_get_post_publish_unpublish_url( $post_id );
 
 	if ( empty( $label_ac ) ) {
@@ -298,14 +295,13 @@ function buddyblog_get_post_publish_unpublish_link( $post_id = 0, $label_ac = ''
 		$label_de = __( 'Unpublish', 'buddyblog' );
 	}
 
-	if ( buddyblog_is_post_published( $post_id ) ) {
+	if ( $is_published ) {
 		$link = "<a href='{$url}'>{$label_de}</a>";
 	} else {
 		$link = "<a href='{$url}'>{$label_ac}</a>";
 	}
 
 	return $link;
-
 }
 
 /**
