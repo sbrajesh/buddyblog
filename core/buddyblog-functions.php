@@ -312,7 +312,6 @@ function buddyblog_get_post_publish_unpublish_link( $post_id = 0, $label_ac = ''
  * @return bool
  */
 function buddyblog_is_post_published( $post_id ) {
-
 	return get_post_field( 'post_status', $post_id ) == 'publish';
 }
 
@@ -322,9 +321,7 @@ function buddyblog_is_post_published( $post_id ) {
  * @return bool
  */
 function buddyblog_use_slug_in_permalink() {
-
-	// whether to use id or slug in permalink.
-	return apply_filters( 'buddyblog_use_slug_in_permalink', false );
+	return apply_filters( 'buddyblog_use_slug_in_permalink', false ); // Whether to use id or slug in permalink.
 }
 
 /**

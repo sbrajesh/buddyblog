@@ -150,7 +150,6 @@ class BuddyBlog {
 			'post_cap'              => 'read',
 			'allow_edit'            => 1,
 			'allow_delete'          => 1,
-
 			// 'enabled_tags'		=> 1,
 			// 'taxonomies'		    => array( 'category' ),
 			'allow_upload'          => 0,
