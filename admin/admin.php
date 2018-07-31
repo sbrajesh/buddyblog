@@ -103,7 +103,7 @@ class BuddyBlog_Admin_Settings_Helper {
 			array(
 				'name'    => 'enable_visibility',
 				'label'   => __( 'Enable post visibility(Public/Private)', 'buddyblog' ),
-				'desc'    => __( 'Allow users to set post visibility?', 'buddyblog' ),
+				'desc'    => __( 'Allow users to set post visibility? Only available when post status is "publish".', 'buddyblog' ),
 				'type'    => 'select',
 				'default' => 0,
 				'options' => array(
