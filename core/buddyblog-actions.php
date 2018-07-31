@@ -191,7 +191,7 @@ class BuddyBlog_Actions {
 		$settings = array(
 			'post_type'             => buddyblog_get_posttype(),
 			'post_status'           => $post_status,
-			'comment_status'        => buddyblog_get_option('show_comment_option') ? 'closed' : buddyblog_get_option( 'comment_status' ),
+			'comment_status'        => buddyblog_get_option( 'show_comment_option' ) ? 'closed' : buddyblog_get_option( 'comment_status' ),
 			'show_comment_option'   => buddyblog_get_option( 'show_comment_option' ),
 			'custom_field_title'    => '', // we are only using it for hidden field, so no need to show it.
 			'custom_fields'         => array(
@@ -206,6 +206,7 @@ class BuddyBlog_Actions {
 			'has_post_thumbnail'    => 1,
 			'current_user_can_post' => current_user_can( buddyblog_get_option( 'post_cap' ) ),
 			'update_callback'       => array( $this, 'on_save' ),
+			'enable_visibility'     => buddyblog_get_option( 'enable_visibility', 0 ),
 		);
 
 		if ( buddyblog_get_option( 'enable_taxonomy' ) ) {

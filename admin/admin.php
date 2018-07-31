@@ -101,6 +101,17 @@ class BuddyBlog_Admin_Settings_Helper {
 				'options' => $post_statuses,
 			),
 			array(
+				'name'    => 'enable_visibility',
+				'label'   => __( 'Enable post visibility(Public/Private)', 'buddyblog' ),
+				'desc'    => __( 'Allow users to set post visibility?', 'buddyblog' ),
+				'type'    => 'select',
+				'default' => 0,
+				'options' => array(
+					1 => __( 'Yes', 'buddyblog' ),
+					0 => __( 'No', 'buddyblog' ),
+				),
+			),
+			array(
 				'name'    => 'allow_upload',
 				'label'   => __( 'Allow Upload?', 'buddyblog' ),
 				'desc'    => __( 'Want to allow user to upload?', 'buddyblog' ),
