@@ -123,6 +123,17 @@ class BuddyBlog_Admin_Settings_Helper {
 				),
 			),
 			array(
+				'name'    => 'allow_post_thumbnail',
+				'label'   => __( 'Enable Post Thumbnail?', 'buddyblog' ),
+				'desc'    => __( 'Want to allow users to add post featured image? Only works when your theme supports featured image.', 'buddyblog' ),
+				'type'    => 'select',
+				'default' => 1,
+				'options' => array(
+					1 => __( 'Yes', 'buddyblog' ),
+					0 => __( 'No', 'buddyblog' ),
+				),
+			),
+			array(
 				'name'    => 'comment_status',
 				'label'   => __( 'Comment status?', 'buddyblog' ),
 				'desc'    => __( 'Do you want to allow commenting on user posts?', 'buddyblog' ),
