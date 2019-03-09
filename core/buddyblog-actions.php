@@ -106,8 +106,13 @@ class BuddyBlog_Actions {
 		}
 
 		if ( buddyblog_user_can_publish( get_current_user_id(), $id ) ) {
-
-			wp_publish_post( $id );// change status to publish.
+			$post = get_post( $id );
+			// generate slug.
+			if ( $post && empty( $post->post_name ) ) {
+				$post->post_name = sanitize_title( $post->post_title );
+			}
+			$post->post_status = 'publish';
+			wp_update_post( $post );
 			bp_core_add_message( __( 'Post Published', 'buddyblog' ) );
 		}
 
