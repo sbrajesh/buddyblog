@@ -1,281 +1,303 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: BuddyBlog\n"
-"POT-Creation-Date: 2016-12-06 05:45+0530\n"
-"PO-Revision-Date: 2016-12-06 05:45+0530\n"
+"POT-Creation-Date: 2019-03-10 00:07+0530\n"
+"PO-Revision-Date: 2019-03-10 00:07+0530\n"
 "Last-Translator: BuddyDev.com\n"
 "Language-Team: BuddyDev Team\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-KeywordsList: __;_e;_x;_ex\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../buddyblog-functions.php:266
-msgid "Publish"
-msgstr ""
-
-#: ../buddyblog-functions.php:270
-msgid "Unpublish"
-msgstr ""
-
-#: ../buddyblog-actions.php:74
-msgid "Post deleted successfully"
-msgstr ""
-
-#: ../buddyblog-actions.php:80
-msgid "You should not perform unauthorized actions"
-msgstr ""
-
-#: ../buddyblog-actions.php:102
-msgid "Post Published"
-msgstr ""
-
-#: ../buddyblog-actions.php:128
-msgid "Post unpublished"
-msgstr ""
-
-#: ../buddyblog-templates.php:111
-msgid "Edit"
-msgstr ""
-
-#: ../buddyblog-templates.php:136
-msgid "Delete"
-msgstr ""
-
-#: ../buddyblog-loader.php:21 ../admin/admin.php:258
-msgid "BuddyBlog"
-msgstr ""
-
-#: ../buddyblog-loader.php:65
-msgid "Search Posts..."
-msgstr ""
-
-#: ../buddyblog-loader.php:98
-#, php-format
-msgid "Blog <span>%d</span>"
-msgstr ""
-
-#: ../buddyblog-loader.php:114 ../buddyblog-loader.php:152
-#: ../buddyblog-loader.php:179
-msgid "Posts"
-msgstr ""
-
-#: ../buddyblog-loader.php:123 ../template/buddyblog/posts.php:91
-msgid "New Post"
-msgstr ""
-
-#: ../buddyblog-loader.php:186
-#, php-format
-msgid "Profile picture of %s"
-msgstr ""
-
-#: ../admin/admin.php:30
+#: ../admin/admin.php:48
 msgid "Settings"
 msgstr ""
 
-#: ../admin/admin.php:30
+#: ../admin/admin.php:48
 msgid "Settings for BuddyBlog."
 msgstr ""
 
-#: ../admin/admin.php:43
+#: ../admin/admin.php:62
 msgid "Published"
 msgstr ""
 
-#: ../admin/admin.php:44
+#: ../admin/admin.php:63
 msgid "Draft"
 msgstr ""
 
-#: ../admin/admin.php:48
+#: ../admin/admin.php:67
 msgid "Open"
 msgstr ""
 
-#: ../admin/admin.php:49
+#: ../admin/admin.php:68
 msgid "Closed"
 msgstr ""
 
-#: ../admin/admin.php:70
+#: ../admin/admin.php:89
 msgid "Blog Post Type"
 msgstr ""
 
-#: ../admin/admin.php:71
+#: ../admin/admin.php:90
 msgid "Set the post type for user blog."
 msgstr ""
 
-#: ../admin/admin.php:79
+#: ../admin/admin.php:97
 msgid "Default post status"
 msgstr ""
 
-#: ../admin/admin.php:80
+#: ../admin/admin.php:98
 msgid "What should be the post status when user submits the form?"
 msgstr ""
 
-#: ../admin/admin.php:88
-msgid "Allow Upload?"
+#: ../admin/admin.php:105
+msgid "Enable post visibility(Public/Private)"
 msgstr ""
 
-#: ../admin/admin.php:89
-msgid "Want to allow user to upload?"
+#: ../admin/admin.php:106
+msgid ""
+"Allow users to set post visibility? Only available when post status is "
+"\"publish\"."
 msgstr ""
 
-#: ../admin/admin.php:93 ../admin/admin.php:115 ../admin/admin.php:139
-#: ../admin/admin.php:160 ../admin/admin.php:174 ../admin/admin.php:202
-#: ../admin/admin.php:222 ../admin/admin.php:242
+#: ../admin/admin.php:110 ../admin/admin.php:121 ../admin/admin.php:132
+#: ../admin/admin.php:151 ../admin/admin.php:173 ../admin/admin.php:192
+#: ../admin/admin.php:203 ../admin/admin.php:228 ../admin/admin.php:246
+#: ../admin/admin.php:264
 msgid "Yes"
 msgstr ""
 
-#: ../admin/admin.php:94 ../admin/admin.php:116 ../admin/admin.php:140
-#: ../admin/admin.php:161 ../admin/admin.php:175 ../admin/admin.php:203
-#: ../admin/admin.php:223 ../admin/admin.php:243
+#: ../admin/admin.php:111 ../admin/admin.php:122 ../admin/admin.php:133
+#: ../admin/admin.php:152 ../admin/admin.php:174 ../admin/admin.php:193
+#: ../admin/admin.php:204 ../admin/admin.php:229 ../admin/admin.php:247
+#: ../admin/admin.php:265
 msgid "No"
 msgstr ""
 
-#: ../admin/admin.php:101
+#: ../admin/admin.php:116
+msgid "Allow Upload?"
+msgstr ""
+
+#: ../admin/admin.php:117
+msgid "Want to allow user to upload?"
+msgstr ""
+
+#: ../admin/admin.php:127
+msgid "Enable Post Thumbnail?"
+msgstr ""
+
+#: ../admin/admin.php:128
+msgid ""
+"Want to allow users to add post featured image? Only works when your theme "
+"supports featured image."
+msgstr ""
+
+#: ../admin/admin.php:138
 msgid "Comment status?"
 msgstr ""
 
-#: ../admin/admin.php:102
+#: ../admin/admin.php:139
 msgid "Do you want to allow commenting on user posts?"
 msgstr ""
 
-#: ../admin/admin.php:110
+#: ../admin/admin.php:146
 msgid "Allow post author to enable/disable comment?"
 msgstr ""
 
-#: ../admin/admin.php:111
+#: ../admin/admin.php:147
 msgid ""
 "If you enable, A user will be able to change the comment status for his/her "
 "post."
 msgstr ""
 
-#: ../admin/admin.php:122
+#: ../admin/admin.php:157
 msgid "Where to redirect after creating/updating post?"
 msgstr ""
 
-#: ../admin/admin.php:123
+#: ../admin/admin.php:158
 msgid ""
 "If you select archive, user will be redirected to the post list, if single, "
 "user will be redirected to single post page if the post is published."
 msgstr ""
 
-#: ../admin/admin.php:127
+#: ../admin/admin.php:162
 msgid "Archive page"
 msgstr ""
 
-#: ../admin/admin.php:128
+#: ../admin/admin.php:163
 msgid "Single post page"
 msgstr ""
 
-#: ../admin/admin.php:134
+#: ../admin/admin.php:168
 msgid "Enable Taxonomy?"
 msgstr ""
 
-#: ../admin/admin.php:135
+#: ../admin/admin.php:169
 msgid ""
 "If you enable, users will be able to select terms from the selected "
 "taxonomies."
 msgstr ""
 
-#: ../admin/admin.php:146
+#: ../admin/admin.php:179
 msgid "Select allowed taxonomies"
 msgstr ""
 
-#: ../admin/admin.php:147
+#: ../admin/admin.php:180
 msgid ""
 "Please check the taxonomies you want users to be able to attach to their "
 "post."
 msgstr ""
 
-#: ../admin/admin.php:155
+#: ../admin/admin.php:187
 msgid "Show single posts on user profile?"
 msgstr ""
 
-#: ../admin/admin.php:156
+#: ../admin/admin.php:188
 msgid ""
 "If you enable it, the permalink to single post will be something like http://"
 "yoursite.com/members/username/buddyblog/postname."
 msgstr ""
 
-#: ../admin/admin.php:169
+#: ../admin/admin.php:198
 msgid "Limit number of posts a user can create?"
 msgstr ""
 
-#: ../admin/admin.php:170
+#: ../admin/admin.php:199
 msgid ""
 "If you enable it, You can control the allowed number of posts from the next "
 "option."
 msgstr ""
 
-#: ../admin/admin.php:181
+#: ../admin/admin.php:209
 msgid "How many posts a user can create?"
 msgstr ""
 
-#: ../admin/admin.php:182
+#: ../admin/admin.php:210
 msgid "Only applies if you have enabled the limit on posts from above option."
 msgstr ""
 
-#: ../admin/admin.php:189
+#: ../admin/admin.php:216
 msgid "Which capability is required for pusblishing?"
 msgstr ""
 
-#: ../admin/admin.php:190 ../admin/admin.php:210
+#: ../admin/admin.php:217 ../admin/admin.php:235
 msgid ""
 "Please check for https://codex.wordpress.org/Roles_and_Capabilities allowed "
 "capabilities."
 msgstr ""
 
-#: ../admin/admin.php:197
+#: ../admin/admin.php:223
 msgid "Allow users to unpublish their own post?"
 msgstr ""
 
-#: ../admin/admin.php:209
+#: ../admin/admin.php:234
 msgid "Which capability is required for creating post?"
 msgstr ""
 
-#: ../admin/admin.php:217
+#: ../admin/admin.php:241
 msgid "Allow user to edit their post?"
 msgstr ""
 
-#: ../admin/admin.php:218
+#: ../admin/admin.php:242
 msgid "if you disable it, user will not be able to edit their own post."
 msgstr ""
 
-#: ../admin/admin.php:229
+#: ../admin/admin.php:252
 msgid "Which capability can edit post in backend(WordPress Dashboard)?"
 msgstr ""
 
-#: ../admin/admin.php:230
+#: ../admin/admin.php:253
 msgid ""
 "User with these capabilities will nto be redirected to front end editor for "
 "editing post., user will not be able to edit their own post."
 msgstr ""
 
-#: ../admin/admin.php:237
+#: ../admin/admin.php:259
 msgid "Allow user to delete their post?"
 msgstr ""
 
-#: ../admin/admin.php:238
+#: ../admin/admin.php:260
 msgid "if you disable it, user will not be able to delete their own post."
 msgstr ""
 
-#: ../admin/admin.php:258
+#: ../admin/admin.php:279
 msgid "BuddyBlog Settings"
+msgstr ""
+
+#: ../admin/admin.php:279 ../buddyblog-loader.php:25
+msgid "BuddyBlog"
 msgstr ""
 
 #: ../admin/options-buddy/fields/image.php:39
 msgid "Remove"
 msgstr ""
 
-#: ../template/buddyblog/single.php:33
-#, php-format
-msgid "Posted on %1$s"
+#: ../buddyblog-loader.php:69
+msgid "Search Posts..."
 msgstr ""
 
-#: ../template/buddyblog/single.php:68
-msgid "No Posts found!"
+#: ../buddyblog-loader.php:103
+#, php-format
+msgid "Blog <span>%d</span>"
+msgstr ""
+
+#: ../buddyblog-loader.php:119 ../buddyblog-loader.php:160
+#: ../buddyblog-loader.php:205
+msgid "Posts"
+msgstr ""
+
+#: ../buddyblog-loader.php:128 ../buddyblog-loader.php:181
+#: ../template/buddyblog/posts.php:91
+msgid "New Post"
+msgstr ""
+
+#: ../buddyblog-loader.php:172
+msgid "My Posts"
+msgstr ""
+
+#: ../buddyblog-loader.php:212
+#, php-format
+msgid "Profile picture of %s"
+msgstr ""
+
+#: ../core/buddyblog-actions.php:82
+msgid "Post deleted successfully"
+msgstr ""
+
+#: ../core/buddyblog-actions.php:88
+msgid "You should not perform unauthorized actions"
+msgstr ""
+
+#: ../core/buddyblog-actions.php:116
+msgid "Post Published"
+msgstr ""
+
+#: ../core/buddyblog-actions.php:143
+msgid "Post unpublished"
+msgstr ""
+
+#: ../core/buddyblog-filters.php:83
+msgid "Your post was saved."
+msgstr ""
+
+#: ../core/buddyblog-functions.php:291
+msgid "Publish"
+msgstr ""
+
+#: ../core/buddyblog-functions.php:295
+msgid "Unpublish"
+msgstr ""
+
+#: ../core/buddyblog-templates.php:127
+msgid "Edit"
+msgstr ""
+
+#: ../core/buddyblog-templates.php:154
+msgid "Delete"
 msgstr ""
 
 #: ../template/buddyblog/edit.php:9
@@ -335,6 +357,11 @@ msgstr ""
 msgid "You haven't posted anything yet."
 msgstr ""
 
-#: ../core/filters.php:59
-msgid "Your post was saved."
+#: ../template/buddyblog/single.php:33
+#, php-format
+msgid "Posted on %1$s"
+msgstr ""
+
+#: ../template/buddyblog/single.php:68
+msgid "No Posts found!"
 msgstr ""
