@@ -220,11 +220,14 @@ class OptionsBuddy_Settings_Page {
             if ( $section->get_disc()  ) {
 				
                 $desc = '<div class="inside">'.$section->get_disc() . '</div>';
-                $callback = create_function('', 'echo "' . str_replace( '"', '\"', $desc ). '";' );
+	            $callback = function () use ( $desc ) {
+		            echo $desc;
+	            };
+                //create_function('', 'echo "' . str_replace( '"', '\"', $desc ). '";' );
 				
             } else {
-				
-                $callback = '__return_false';
+
+	            $callback = '__return_empty_string';
             }
 
             add_settings_section( $section->get_id(), $section->get_title(), $callback, $this->get_page() );
@@ -274,9 +277,11 @@ class OptionsBuddy_Settings_Page {
 
 			 register_setting( $this->get_optgroup(), $this->get_option_name(), array( $this, 'sanitize_options' ) );
 		   }
+		  
 		}
 	}
     
+
 
     
     /**
@@ -351,7 +356,7 @@ class OptionsBuddy_Settings_Page {
         ?>
         <div class="metabox-holder">
             <div class="postbox options-postbox" style="padding:10px;">
-                <form method="post" action="options.php">
+                <form method="post" action="<?php echo admin_url('options.php');?>">
 					<?php settings_fields( $this->get_optgroup() ); ?>
 					<?php foreach ( $this->sections as $section ) : ?>
 					<div id="<?php echo $section->get_id(); ?>" class="settings-section-tab">
@@ -378,7 +383,7 @@ class OptionsBuddy_Settings_Page {
     public function render() {
 		
         echo '<div class="wrap">';
-
+		//do_action( 'admin_notices');
         $this->show_navigation();
         $this->show_form();
 

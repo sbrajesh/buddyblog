@@ -3,12 +3,12 @@
 //only load if not already loaded
 if( ! class_exists( 'OptionsBuddy_Settings_Page' ) ):
 	
-	$path = dirname( __FILE__ ). DIRECTORY_SEPARATOR ;
+	$ob_path = wp_normalize_path ( dirname( __FILE__ ) ) . '/';
 	
-	require_once $path.'core/class-ob-field.php';
-	require_once $path.'core/class-ob-section.php';
-	require_once $path.'core/class-ob-page.php';
-	require_once $path.'core/class-ob-helper.php';
+	require_once $ob_path . 'core/class-ob-field.php';
+	require_once $ob_path . 'core/class-ob-section.php';
+	require_once $ob_path . 'core/class-ob-page.php';
+	require_once $ob_path . 'core/class-ob-helper.php';
 	
 endif;
 
@@ -28,8 +28,9 @@ function options_buddy_field_class_loader( $class ) {
     //let us reach to the file
     $file = dirname( __FILE__ ). DIRECTORY_SEPARATOR . 'fields'. DIRECTORY_SEPARATOR . $file_name. '.php';
      
-    if( is_readable( $file ) )
+    if( is_readable( $file ) ) {
         require_once $file; 
+	}	
        
 }
 spl_autoload_register('options_buddy_field_class_loader');
