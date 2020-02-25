@@ -90,4 +90,7 @@
 <?php elseif ( bp_is_my_profile() && buddyblog_user_can_post( get_current_user_id() ) ): ?>
     <p> <?php _e( "You haven't posted anything yet.", 'buddyblog' );?> <a href="<?php echo buddyblog_get_new_url();?>"> <?php _e( 'New Post', 'buddyblog' );?></a></p>
 
+<?php elseif ( bp_is_user() ): ?>
+    <?php echo sprintf( "<p>%s haven't posted anything yet.</p>", bp_get_displayed_user_fullname() );?>
+
 <?php endif; ?>
