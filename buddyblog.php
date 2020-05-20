@@ -52,12 +52,10 @@ class BuddyBlog {
 	 * Constructor
 	 */
 	private function __construct() {
-
 		$this->path     = plugin_dir_path( __FILE__ );
 		$this->url      = plugin_dir_url( __FILE__ );
 		$this->basename = plugin_basename( __FILE__ );
 
-		$this->setup_constants();
 		$this->setup();
 	}
 
@@ -81,6 +79,7 @@ class BuddyBlog {
 	public function setup() {
 		register_activation_hook( __FILE__, array( $this, 'install' ) );
 
+		add_action( 'plugins_loaded', array( $this, 'setup_constants' ), 0 );
 		add_action( 'bp_include', array( $this, 'load' ) );
 		add_action( 'bp_init', array( $this, 'load_textdomain' ), 2 );
 		// add_action( 'bp_enqueue_scripts', array( $this, 'load_comment_js' ) );
@@ -89,7 +88,7 @@ class BuddyBlog {
 	/**
 	 * Setup constants.
 	 */
-	private function setup_constants() {
+	public function setup_constants() {
 		if ( ! defined( 'BUDDYBLOG_ARCHIVE_SLUG' ) ) {
 			define( 'BUDDYBLOG_ARCHIVE_SLUG', 'my-posts' );
 		}
