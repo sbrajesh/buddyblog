@@ -428,5 +428,5 @@ function buddyblog_get_settings() {
 		'post_update_redirect'  => 'archive',
 	);
 
-	return bp_get_option( 'buddyblog-settings', $default );
+	return (array) apply_filters( 'buddyblog_settings', bp_get_option( 'buddyblog-settings', $default ) );
 }
