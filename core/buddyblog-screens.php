@@ -89,7 +89,11 @@ class BuddyBlog_Screens {
 
 		ob_start();
 
+		do_action( 'buddyblog_before_single_post_load' );
+
 		buddyblog_load_template( 'single.php' );
+
+		do_action( 'buddyblog_after_single_post_load' );
 
 		$content = ob_get_clean();
 
@@ -103,7 +107,11 @@ class BuddyBlog_Screens {
 
 		ob_start();
 
+		do_action( 'buddyblog_before_post_archive_load' );
+
 		buddyblog_load_template( 'posts.php' );
+
+		do_action( 'buddyblog_after_post_archive_load' );
 
 		$content = ob_get_clean();
 
@@ -117,7 +125,11 @@ class BuddyBlog_Screens {
 
 		ob_start();
 
+		do_action( 'buddyblog_before_edit_post_load' );
+
 		buddyblog_load_template( 'edit.php' );
+
+		do_action( 'buddyblog_after_edit_post_load' );
 
 		$content = ob_get_clean();
 
