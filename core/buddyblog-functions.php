@@ -67,8 +67,8 @@ function buddyblog_get_total_posted( $user_id = 0, $is_my_profile = false ) {
 	$status = array( "post_status='publish'" );
 
 	if ( $is_my_profile ) {
-		$status[] = "post_status='draft'";
-		$status[] = "post_status='private'";
+		$status[] = $wpdb->prepare( "post_status=%s", 'draft' );
+		$status[] = $wpdb->prepare( "post_status=%s", 'private' );
 	}
 
 	$where_status_query = join( ' || ', $status );
