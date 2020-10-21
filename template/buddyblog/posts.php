@@ -1,13 +1,20 @@
 <?php
 /**
  * This file is used for listing the posts on profile
+ *
+ * @package buddyblog
  */
-?>
 
-<?php if ( buddyblog_user_has_posted() ): ?>
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
+$user_id       = bp_displayed_user_id();
+$is_my_profile = bp_is_my_profile();
+?>
+<?php if ( buddyblog_user_has_posted( $user_id, $is_my_profile ) ): ?>
 <?php
     //let us build the post query
-    if ( bp_is_my_profile() || is_super_admin() ) {
+    if ( $is_my_profile || is_super_admin() ) {
  		$status = 'any';
 	} else {
 		$status = 'publish';
@@ -17,7 +24,7 @@
     $paged = $paged ? $paged : 1;
     
 	$query_args = array(
-		'author'        => bp_displayed_user_id(),
+		'author'        => $user_id,
 		'post_type'     => buddyblog_get_posttype(),
 		'post_status'   => $status,
 		'paged'         => intval( $paged )

@@ -1,13 +1,26 @@
-<?php if ( buddyblog_user_has_posted() ): ?>
 <?php
-    if ( bp_is_my_profile() || is_super_admin() ) {
+/**
+ * Single post template file
+ *
+ * @package buddyblog
+ */
+
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
+$user_id       = bp_displayed_user_id();
+$is_my_profile = bp_is_my_profile();
+?>
+<?php if ( buddyblog_user_has_posted( $user_id, $is_my_profile ) ): ?>
+<?php
+    if ( $is_my_profile || is_super_admin() ) {
         $status = 'any';
 	} else {
         $status = 'publish';
 	}
 	
     $query_args = array(
-		'author'        => bp_displayed_user_id(),
+		'author'        => $user_id,
 		'post_type'     => buddyblog_get_posttype(),
 		'post_status'   => $status,
 		'p'             => intval( buddyblog_get_post_id( bp_action_variable( 0 ) ) )

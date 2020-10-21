@@ -89,14 +89,17 @@ class BuddyBlog_Core_Component extends BP_Component {
 
 		$total_posts = 0;
 
-		if ( bp_is_my_profile() ) {
-			$total_posts = buddyblog_get_total_posted( bp_displayed_user_id() );
+		$user_id       = bp_displayed_user_id();
+		$is_my_profile = bp_is_my_profile();
+
+		if ( $is_my_profile ) {
+			$total_posts = buddyblog_get_total_posted( $user_id, $is_my_profile );
 
 		} else {
-			$total_posts = buddyblog_get_total_published_posts( bp_displayed_user_id() );
+			$total_posts = buddyblog_get_total_published_posts( $user_id );
 		}
 
-		$total_posts = apply_filters( 'buddyblog_visible_posts_count', $total_posts, bp_displayed_user_id() );
+		$total_posts = apply_filters( 'buddyblog_visible_posts_count', $total_posts, $user_id );
 
 		// Add 'Blog' to the main navigation.
 		$main_nav = array(
@@ -109,7 +112,7 @@ class BuddyBlog_Core_Component extends BP_Component {
 		);
 
 		// Whether to link to logged in user or displayed user.
-		if ( ! bp_is_my_profile() ) {
+		if ( ! $is_my_profile ) {
 			$blog_link = trailingslashit( bp_displayed_user_domain() . $this->slug );
 		} else {
 			$blog_link = trailingslashit( bp_loggedin_user_domain() . $this->slug );

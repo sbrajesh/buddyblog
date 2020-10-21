@@ -48,22 +48,32 @@ function buddyblog_get_taxonomies() {
 /**
  * Get total no. of Posts  posted by a user
  *
- * @param int $user_id user id.
+ * @param int  $user_id user id.
+ * @param bool $is_my_profile Is user profile.
  *
  * @return int
  *
  * @todo : may need revisist
  */
-function buddyblog_get_total_posted( $user_id = 0 ) {
+function buddyblog_get_total_posted( $user_id = 0, $is_my_profile = false ) {
+
+	// Needs revisit.
+	global $wpdb;
 
 	if ( ! $user_id ) {
 		$user_id = bp_displayed_user_id();
 	}
 
-	// Needs revisit.
-	global $wpdb;
+	$status = array( "post_status='publish'" );
 
-	$count = $wpdb->get_var( $wpdb->prepare( "SELECT count('*') FROM {$wpdb->posts} WHERE post_author=%d AND post_type=%s AND (post_status='publish'||post_status='draft')", $user_id, buddyblog_get_posttype() ) );
+	if ( $is_my_profile ) {
+		$status[] = "post_status='draft'";
+		$status[] = "post_status='private'";
+	}
+
+	$where_status_query = join( ' || ', $status );
+
+	$count = $wpdb->get_var( $wpdb->prepare( "SELECT count('*') FROM {$wpdb->posts} WHERE post_author=%d AND post_type=%s AND ({$where_status_query})", $user_id, buddyblog_get_posttype() ) );
 
 	return intval( $count );
 }
@@ -201,11 +211,14 @@ function buddyblog_is_new_post() {
 /**
  * Has user posted
  *
+ * @param int  $user_id       User id of user need to check permission.
+ * @param bool $is_my_profile Is my profile.
+ *
  * @return bool
  */
-function buddyblog_user_has_posted() {
+function buddyblog_user_has_posted( $user_id = 0, $is_my_profile = false ) {
 
-	$total_posts = buddyblog_get_total_posted();
+	$total_posts = buddyblog_get_total_posted( $user_id, $is_my_profile );
 
 	return (bool) $total_posts;
 }
